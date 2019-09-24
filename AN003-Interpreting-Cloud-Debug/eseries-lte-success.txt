@@ -1,0 +1,274 @@
+clouddebug: press letter corresponding to the command
+a - enter APN for 3rd-party SIM card
+k - set keep-alive value
+c - show carriers at this location
+t - run normal tests (occurs automatically after 10 seconds)
+or tap the MODE button once to show carriers
+starting tests...
+turning cellular on...
+deviceID=2b0039001047373333353132
+manufacturer=u-blox
+model=SARA-R410M-02B
+firmware version=L0.0.00.00.05.06 [Feb 03 2018 13:00:41]
+ordering code=SARA-R410M-02B
+IMEI=352753090000000
+IMSI=u-blox
+ICCID=89014103259699999999
+0000020098 [app] INFO: enabling trace logging
+attempting to connect to the cellular network...
+0000020098 [system] INFO: Sim Ready
+0000020098 [system] INFO: Sim Ready
+0000020099 [system] INFO: ARM_WLAN_WD 1
+0000020099 [system] INFO: ARM_WLAN_WD 1
+
+[ Modem::register ] = = = = = = = = = = = = = =
+    20.098 AT send      12 "AT+CEREG=2\r\n"
+    20.106 AT read OK    6 "\r\nOK\r\n"
+    20.106 AT send      11 "AT+CEREG?\r\n"
+    20.116 AT read  +   33 "\r\n+CEREG: 2,1,\"D0B\",\"C45C010\",8\r\n"
+    20.118 AT read OK    6 "\r\nOK\r\n"
+    20.118 AT send       4 "AT\r\n"
+    20.125 AT read OK    6 "\r\nOK\r\n"
+    20.125 AT send      13 "AT+COPS=3,2\r\n"
+    20.133 AT read OK    6 "\r\nOK\r\n"
+    20.133 AT send      10 "AT+COPS?\r\n"
+    20.142 AT read  +   25 "\r\n+COPS: 0,2,\"310410\",8\r\n"
+    20.143 AT read OK    6 "\r\nOK\r\n"
+    20.143 AT send       8 "AT+CSQ\r\n"
+    20.151 AT read  +   15 "\r\n+CSQ: 19,99\r\n"
+    20.152 AT read OK    6 "\r\nOK\r\n"
+
+[ Modem::join ] = = = = = = = = = = = = = = = =
+    20.152 AT send      14 "AT+CGPADDR=1\r\n"
+    20.163 AT read  +   29 "\r\n+CGPADDR: 1,10.206.40.209\r\n"
+    20.165 AT read OK    6 "\r\nOK\r\n"
+0000020167 [system] INFO: ARM_WLAN_WD 2
+0000020167 [system] INFO: ARM_WLAN_WD 2
+0000020168 [system] INFO: CLR_WLAN_WD 1, DHCP success
+0000020168 [system] INFO: CLR_WLAN_WD 1, DHCP success
+connected to the cellular network in 0 milliseconds
+connected to cellular network!
+    20.167 AT send      12 "AT+UDOPN=9\r\n"
+    20.175 AT read ERR   9 "\r\nERROR\r\n"
+operator name=
+    20.175 AT send       8 "AT+CSQ\r\n"
+    20.183 AT read  +   15 "\r\n+CSQ: 19,99\r\n"
+    20.184 AT read OK    6 "\r\nOK\r\n"
+rssi=-75, qual=99
+    20.184 AT send      11 "AT+CGED=5\r\n"
+    20.192 AT read ERR   9 "\r\nERROR\r\n"
+    20.192 AT send      11 "AT+CGED=3\r\n"
+    20.200 AT read ERR   9 "\r\nERROR\r\n"
+0000020202 [app] INFO: service rat=GSM mcc=65535, mnc=255, lac=0 ci=0 band=GSM 900 rssi=-121 bsic=0 arfcn=0 rxlev=0
+0000020202 [app] INFO: service rat=GSM mcc=65535, mnc=255, lac=0 ci=0 band=GSM 900 rssi=-121 bsic=0 arfcn=0 rxlev=0
+    20.202 AT send      20 "AT+UPING=\"8.8.8.8\"\r\n"
+    20.211 AT read ERR   9 "\r\nERROR\r\n"
+ping addr 8.8.8.8=0
+    20.211 AT send      31 "AT+UDNSRN=0,\"device.spark.io\"\r\n"
+    20.221 AT read ERR   9 "\r\nERROR\r\n"
+device.spark.io=0.0.0.0
+connecting to cloud
+0000020223 [system] INFO: Cloud: connecting
+0000020223 [system] INFO: Cloud: connecting
+0000020225 [system] INFO: Read Server Address = type:1,domain:$id.udp.particle.io
+0000020225 [system] INFO: Read Server Address = type:1,domain:$id.udp.particle.io
+0000020226 [system] INFO: Loaded cloud server address and port from session data
+0000020226 [system] INFO: Loaded cloud server address and port from session data
+    20.225 AT send       4 "AT\r\n"
+    20.232 AT read OK    6 "\r\nOK\r\n"
+    20.232 AT send      15 "AT+USOCTL=0,0\r\n"
+    20.242 AT read  +   19 "\r\n+USOCTL: 0,0,17\r\n"
+    20.243 AT read OK    6 "\r\nOK\r\n"
+Socket handle 0 (UDP) open, closing...
+    20.243 AT send      12 "AT+USOCL=0\r\n"
+    20.254 AT read OK    6 "\r\nOK\r\n"
+Socket handle 0 was closed.
+    20.254 AT send      15 "AT+USOCTL=1,0\r\n"
+    20.264 AT read  +   18 "\r\n+USOCTL: 1,0,0\r\n"
+    20.265 AT read OK    6 "\r\nOK\r\n"
+Socket handle 1 (UNK) open, closing...
+    20.265 AT send      12 "AT+USOCL=1\r\n"
+    20.276 AT read ERR  37 "\r\n+CME ERROR: Operation not allowed\r\n"
+    20.277 AT send      15 "AT+USOCTL=2,0\r\n"
+    20.285 AT read UNK   2 "\r\n"
+    20.286 AT read  +   18 "\r\n+USOCTL: 2,0,0\r\n"
+    20.287 AT read OK    6 "\r\nOK\r\n"
+Socket handle 2 (UNK) open, closing...
+    20.287 AT send      12 "AT+USOCL=2\r\n"
+    20.298 AT read ERR  37 "\r\n+CME ERROR: Operation not allowed\r\n"
+    20.299 AT send      15 "AT+USOCTL=3,0\r\n"
+    20.307 AT read UNK   2 "\r\n"
+    20.308 AT read  +   18 "\r\n+USOCTL: 3,0,0\r\n"
+    20.309 AT read OK    6 "\r\nOK\r\n"
+Socket handle 3 (UNK) open, closing...
+    20.309 AT send      12 "AT+USOCL=3\r\n"
+    20.320 AT read ERR  37 "\r\n+CME ERROR: Operation not allowed\r\n"
+    20.321 AT send      15 "AT+USOCTL=4,0\r\n"
+    20.329 AT read UNK   2 "\r\n"
+    20.330 AT read  +   18 "\r\n+USOCTL: 4,0,0\r\n"
+    20.331 AT read OK    6 "\r\nOK\r\n"
+Socket handle 4 (UNK) open, closing...
+    20.331 AT send      12 "AT+USOCL=4\r\n"
+    20.342 AT read ERR  37 "\r\n+CME ERROR: Operation not allowed\r\n"
+    20.343 AT send      15 "AT+USOCTL=5,0\r\n"
+    20.351 AT read UNK   2 "\r\n"
+    20.352 AT read  +   18 "\r\n+USOCTL: 5,0,0\r\n"
+    20.353 AT read OK    6 "\r\nOK\r\n"
+Socket handle 5 (UNK) open, closing...
+    20.353 AT send      12 "AT+USOCL=5\r\n"
+    20.364 AT read ERR  37 "\r\n+CME ERROR: Operation not allowed\r\n"
+    20.365 AT send      15 "AT+USOCTL=6,0\r\n"
+    20.373 AT read UNK   2 "\r\n"
+    20.374 AT read  +   18 "\r\n+USOCTL: 6,0,0\r\n"
+    20.375 AT read OK    6 "\r\nOK\r\n"
+Socket handle 6 (UNK) open, closing...
+    20.375 AT send      12 "AT+USOCL=6\r\n"
+    20.386 AT read ERR  37 "\r\n+CME ERROR: Operation not allowed\r\n"
+socketSocket: closed stale socket handle(s)
+socketSocket(UDP)
+    20.387 AT send      18 "AT+USOCR=17,5684\r\n"
+    20.399 AT read UNK   2 "\r\n"
+    20.400 AT read  +   13 "\r\n+USOCR: 0\r\n"
+    20.401 AT read OK    6 "\r\nOK\r\n"
+Socket 0: handle 0 was created
+0000020403 [system] TRACE: Connection attempt to 54.82.141.176:5684
+0000020404 [system] INFO: Cloud socket connected
+0000020404 [system] INFO: Cloud socket connected
+0000020405 [system] INFO: Starting handshake: presense_announce=0
+0000020405 [system] INFO: Starting handshake: presense_announce=0
+0000020405 [comm.protocol.handshake] INFO: Establish secure connection
+0000020405 [comm.protocol.handshake] INFO: Establish secure connection
+0000020415 [comm.dtls] WARN: session has 0 uses
+0000020415 [comm.dtls] WARN: session has 0 uses
+0000020420 [comm.dtls] INFO: (CMPL,RENEG,NO_SESS,ERR) restoreStatus=0
+0000020420 [comm.dtls] INFO: (CMPL,RENEG,NO_SESS,ERR) restoreStatus=0
+0000020421 [comm.dtls] INFO: out_ctr 0,1,0,0,0,0,0,11, next_coap_id=7
+0000020421 [comm.dtls] INFO: out_ctr 0,1,0,0,0,0,0,11, next_coap_id=7
+0000020421 [comm.dtls] INFO: app state crc: cached: 8d164315, actual: 8d164315
+0000020421 [comm.dtls] INFO: app state crc: cached: 8d164315, actual: 8d164315
+0000020422 [comm.dtls] WARN: skipping hello message
+0000020422 [comm.dtls] WARN: skipping hello message
+0000020423 [comm.dtls] INFO: restored session from persisted session data. next_msg_id=7
+0000020423 [comm.dtls] INFO: restored session from persisted session data. next_msg_id=7
+0000020424 [comm.dtls] INFO: session cmd (CLS,DIS,MOV,LOD,SAV): 2
+0000020424 [comm.dtls] INFO: session cmd (CLS,DIS,MOV,LOD,SAV): 2
+0000020425 [comm.protocol.handshake] INFO: resumed session - not sending HELLO message
+0000020425 [comm.protocol.handshake] INFO: resumed session - not sending HELLO message
+0000020426 [comm.coap] TRACE: sending message id=8
+socketSendTo(0,54.82.141.176,5684,,46)
+    20.425 AT send      11 "AT+CEREG?\r\n"
+    20.434 AT read  +   33 "\r\n+CEREG: 2,1,\"D0B\",\"C45C010\",8\r\n"
+    20.436 AT read OK    6 "\r\nOK\r\n"
+    20.436 AT send      36 "AT+USOST=0,\"54.82.141.176\",5684,46\r\n"
+    20.446 AT read  >    3 "\r\n@"
+    20.446 AT send      46 "\xfe\xfe\xfd\x00\x01\x00\x00\x00\x00\x00\v\x00\x14\x00\x01\x00\x00\x00\x00\x00\v?\xe16\xf3M&\x8e\x02\xfe>B\x17+\x009\x00\x10G733512\f"
+    20.680 AT read  +   16 "\r\n+USOST: 0,46\r\n"
+    20.681 AT read OK    6 "\r\nOK\r\n"
+    20.681 AT send       4 "AT\r\n"
+    20.686 AT read OK    6 "\r\nOK\r\n"
+    20.686 AT send      14 "AT+USORF=0,0\r\n"
+    20.693 AT read UNK   4 "\r\r\n\r"
+    20.694 AT read  +   15 "\r\n+USORF: 0,0\r\n"
+Socket 0: handle 0 has 0 bytes pending
+    20.695 AT read OK    4 "OK\r\n"
+0000020697 [system] INFO: cloud connected from existing session.
+0000020697 [system] INFO: cloud connected from existing session.
+0000020698 [comm.coap] TRACE: sending message id=9
+socketSendTo(0,54.82.141.176,5684,,86)
+    20.697 AT send      11 "AT+CEREG?\r\n"
+    20.705 AT read  +   33 "\r\n+CEREG: 2,1,\"D0B\",\"C45C010\",8\r\n"
+    20.707 AT read OK    6 "\r\nOK\r\n"
+    20.707 AT send      36 "AT+USOST=0,\"54.82.141.176\",5684,86\r\n"
+    20.715 AT read  >    3 "\r\n@"
+    20.715 AT send      86 "\xfe\xfe\xfd\x00\x01\x00\x00\x00\x00\x00\f\x00<\x00\x01\x00\x00\x00\x00\x00\f\xaf/\xe00\xdb\xd8\f\x97\tc\xda\x1fZ\xb1\x8f\x86\x97\x12_`\x03\\]\xdd\\15\x03Y\x1b\x8c}O\xe4\xf9\xce\xfc\xdd\xf9\xb6\x06\xe74\xf5o1\xecm\xe1\x16&\x03+\x009\x00\x10G733512\f"
+    20.734 AT read  +   16 "\r\n+USOST: 0,86\r\n"
+    20.735 AT read OK    6 "\r\nOK\r\n"
+    20.735 AT send       4 "AT\r\n"
+    20.740 AT read OK    6 "\r\nOK\r\n"
+    20.740 AT send      14 "AT+USORF=0,0\r\n"
+    20.747 AT read UNK   4 "\r\r\n\r"
+    20.748 AT read  +   15 "\r\n+USORF: 0,0\r\n"
+Socket 0: handle 0 has 0 bytes pending
+    20.749 AT read OK    4 "OK\r\n"
+0000020751 [comm.coap] TRACE: sending message id=a
+socketSendTo(0,54.82.141.176,5684,,86)
+    20.750 AT send      11 "AT+CEREG?\r\n"
+    20.758 AT read  +   33 "\r\n+CEREG: 2,1,\"D0B\",\"C45C010\",8\r\n"
+    20.760 AT read OK    6 "\r\nOK\r\n"
+    20.760 AT send      36 "AT+USOST=0,\"54.82.141.176\",5684,86\r\n"
+    20.768 AT read  >    3 "\r\n@"
+    20.768 AT send      86 "\xfe\xfe\xfd\x00\x01\x00\x00\x00\x00\x00\r\x00<\x00\x01\x00\x00\x00\x00\x00\rz\x96\xc9J\x9b\x1b\x13\xea\xcb2\xa4+\xd5\xbdhtR\xc3\xd9\x17\xcd\xa4X\xeb\xf4\xc0\xfb\xfb\xdd\x84\aK\xe3_\x03\xd9\x83\xfd\r\x9b\xaeI\x17\x87\x9c\x88G~\x01\xc2Cs+\x009\x00\x10G733512\f"
+    20.788 AT read  +   16 "\r\n+USOST: 0,86\r\n"
+    20.789 AT read OK    6 "\r\nOK\r\n"
+    20.789 AT send       4 "AT\r\n"
+    20.793 AT read OK    6 "\r\nOK\r\n"
+    20.793 AT send      14 "AT+USORF=0,0\r\n"
+    20.800 AT read UNK   4 "\r\r\n\r"
+    20.801 AT read  +   15 "\r\n+USORF: 0,0\r\n"
+Socket 0: handle 0 has 0 bytes pending
+    20.802 AT read OK    4 "OK\r\n"
+0000020804 [system] TRACE: Waiting until all handshake messages are processed by the protocol layer
+    20.912 AT read  +   17 "\r\n+UUSORF: 0,33\r\n"
+Socket 0: handle 0 has 33 bytes pending
+    20.913 AT send      17 "AT+USORF=0,1024\r\n"
+    20.925 AT read  +   75 "\r\n\r\n+USORF: 0,\"54.82.141.176\",5684,33,\"\x17\xfe\xfd\x00\x01\x00\x00\x00\x00\x00\v\x00\x14\x00\x01\x00\x00\x00\x00\x00\v\xbf\x1eq\xc4?\t\xce\x9d\xd8w\xc1\xe4\"\r\n"
+    20.928 AT read OK    6 "\r\nOK\r\n"
+    20.928 AT send       4 "AT\r\n"
+    20.933 AT read OK    6 "\r\nOK\r\n"
+    20.933 AT send      14 "AT+USORF=0,0\r\n"
+    20.940 AT read UNK   4 "\r\r\n\r"
+    20.941 AT read  +   15 "\r\n+USORF: 0,0\r\n"
+Socket 0: handle 0 has 0 bytes pending
+    20.942 AT read OK    4 "OK\r\n"
+0000020944 [system] TRACE: received 33
+0000020944 [comm.dtls] INFO: session cmd (CLS,DIS,MOV,LOD,SAV): 4
+0000020944 [comm.dtls] INFO: session cmd (CLS,DIS,MOV,LOD,SAV): 4
+0000020945 [comm.coap] TRACE: recieved ACK for message id=8
+0000020946 [comm.protocol] TRACE: Reply recieved: type=2, code=0
+0000020946 [comm.protocol] INFO: message id 8 complete with code 0.00
+0000020946 [comm.protocol] INFO: message id 8 complete with code 0.00
+0000020947 [comm.protocol] INFO: rcv'd message type=13
+0000020947 [comm.protocol] INFO: rcv'd message type=13
+    21.001 AT read  +   17 "\r\n+UUSORF: 0,33\r\n"
+Socket 0: handle 0 has 33 bytes pending
+    21.012 AT send      17 "AT+USORF=0,1024\r\n"
+    21.024 AT read  +   75 "\r\n\r\n+USORF: 0,\"54.82.141.176\",5684,33,\"\x17\xfe\xfd\x00\x01\x00\x00\x00\x00\x00\f\x00\x14\x00\x01\x00\x00\x00\x00\x00\f.?\xee\xd7#\x87\xed\x8f8\xf6\xf10\"\r\n"
+    21.027 AT read OK    6 "\r\nOK\r\n"
+    21.027 AT send       4 "AT\r\n"
+    21.027 AT read  +   17 "\r\n+UUSORF: 0,33\r\n"
+Socket 0: handle 0 has 33 bytes pending
+    21.032 AT read OK    6 "\r\nOK\r\n"
+    21.032 AT send      14 "AT+USORF=0,0\r\n"
+    21.039 AT read UNK   4 "\r\r\n\r"
+    21.040 AT read  +   16 "\r\n+USORF: 0,33\r\n"
+Socket 0: handle 0 has 33 bytes pending
+    21.041 AT read OK    4 "OK\r\n"
+0000021043 [system] TRACE: received 33
+0000021043 [comm.coap] TRACE: recieved ACK for message id=9
+0000021043 [comm.protocol] TRACE: Reply recieved: type=2, code=0
+0000021044 [comm.protocol] INFO: message id 9 complete with code 0.00
+0000021044 [comm.protocol] INFO: message id 9 complete with code 0.00
+0000021045 [comm.protocol] INFO: rcv'd message type=13
+0000021045 [comm.protocol] INFO: rcv'd message type=13
+    21.054 AT send      17 "AT+USORF=0,1024\r\n"
+    21.067 AT read  +   75 "\r\n\r\n+USORF: 0,\"54.82.141.176\",5684,33,\"\x17\xfe\xfd\x00\x01\x00\x00\x00\x00\x00\r\x00\x14\x00\x01\x00\x00\x00\x00\x00\rv\x0fy\xec\x05\x0fY-\x10\x04z\xd1\"\r\n"
+    21.070 AT read OK    6 "\r\nOK\r\n"
+    21.070 AT send       4 "AT\r\n"
+    21.075 AT read OK    6 "\r\nOK\r\n"
+    21.075 AT send      14 "AT+USORF=0,0\r\n"
+    21.082 AT read UNK   4 "\r\r\n\r"
+    21.083 AT read  +   15 "\r\n+USORF: 0,0\r\n"
+Socket 0: handle 0 has 0 bytes pending
+    21.084 AT read OK    4 "OK\r\n"
+0000021086 [system] TRACE: received 33
+0000021086 [comm.coap] TRACE: recieved ACK for message id=a
+0000021086 [system] INFO: All handshake messages have been processed
+0000021086 [system] INFO: All handshake messages have been processed
+0000021087 [comm.protocol] TRACE: Reply recieved: type=2, code=0
+0000021088 [comm.protocol] INFO: message id 10 complete with code 0.00
+0000021088 [comm.protocol] INFO: message id 10 complete with code 0.00
+0000021089 [comm.protocol] INFO: rcv'd message type=13
+0000021089 [comm.protocol] INFO: rcv'd message type=13
+0000021101 [system] INFO: Cloud connected
+0000021101 [system] INFO: Cloud connected
+connected to the cloud!
