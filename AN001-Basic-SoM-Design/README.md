@@ -17,6 +17,8 @@ As this board doesn't really do much, you'll unlikely use it as-is, but you can 
 
 ![Whole Board](images/whole-board.png)
 
+There is another design in the [SoM first board tutorial](https://docs.particle.io/tutorials/hardware-projects/som-first-board/) that includes additional information that will be useful for building your first board.
+
 ## Board
 
 ![Board Features](images/features.png)
@@ -32,6 +34,8 @@ As this board doesn't really do much, you'll unlikely use it as-is, but you can 
 9. MAX17043 fuel gauge
 
 ![Board](images/board.png)
+
+While the pictures show a simple M3 screw and nut to hold down the SoM, the Eagle files have been updated with a proper standoff assembly. This is described in detail [here](https://docs.particle.io/tutorials/hardware-projects/som-first-board/#hold-down-screw).
 
 ## Schematic
 
@@ -81,6 +85,8 @@ The bill of materials for this board is:
 | 1 | RGB LED 4PLCC | [Cree CLMVC-FKA-CL1D1L71BB7C3C3](https://www.digikey.com/product-detail/en/cree-inc/CLMVC-FKA-CL1D1L71BB7C3C3/CLMVC-FKA-CL1D1L71BB7C3C3CT-ND/9094273 CLMVC-FKA-CL1D1L71BB7C3C3) | $0.19 |
 | 1 | Red LED 0603 5mA | [Lite-On LTST-C193KRKT-5A](https://www.digikey.com/product-detail/en/lite-on-inc/LTST-C193KRKT-5A/160-1830-1-ND/2356251) | $0.41 |
 | 1 | M.2 connector | [TE Connectivity 2199230-4](https://www.digikey.com/product-detail/en/te-connectivity-amp-connectors/2199230-4/A115904CT-ND/4208916) | $1.42 |
+| 1 | M.2 standoff | [JAE 	SM3ZS067U410-NUT1-R1200](https://www.digikey.com/product-detail/en/jae-electronics/SM3ZS067U410-NUT1-R1200/670-2865-1-ND/5955849) | $1.25 |
+| 1 | M2*3 screw w/4mm head | [example](https://www.amazon.com/gp/product/B07NZ32TRB/ref=ppx_yo_dt_b_asin_title_o00_s00) | |
 
 
 ## Eagle Files
@@ -89,7 +95,7 @@ The eagle directory contains files for Autodesk Eagle CAD 9. It is a small two-l
 
 - SomTest1.sch - Schematic
 - SomTest1.brd - Board File
-- SomTest1v3.zip - Gerbers
+- SomTest1v4.zip - Gerbers
 - SomTest1.lbr - Library file containing all of the components on this board
 - SomTest1-brd.pdf - PDF version of the board
 - SomTest1-sch.pdf - PDF version of the schematic
