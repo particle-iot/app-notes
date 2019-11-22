@@ -71,7 +71,6 @@ The bill of materials for this board is:
 | 1 | 0.001 uF capacitor 0603 | [Murata GRM1885C1H102JA01D](https://www.digikey.com/product-detail/en/murata-electronics-north-america/GRM1885C1H102JA01D/490-1451-1-ND/587655) | | 
 | 1 | 0.047 uF capacitor 0603 | [Murata GCJ188R71H473KA12D](https://www.digikey.com/product-detail/en/murata-electronics-north-america/GCJ188R71H473KA12D/490-5854-1-ND/2785840) | | 
 | 1 | 0.01 uF capacitor 0603 | [Murata GCM188R72A103KA37J](https://www.digikey.com/product-detail/en/murata-electronics-north-america/GCM188R72A103KA37J/490-8028-1-ND/4380313) | | 
-| 1 | 0.1 uF capacitor 0603 | [Murata GRM188R71C104KA01D](https://www.digikey.com/product-detail/en/murata-electronics-north-america/GRM188R71C104KA01D/490-1532-1-ND/587771) | | 
 | 2 | 1 uF capacitor 0603 | [Samsung CL10B105KA8NNNC](https://www.digikey.com/product-detail/en/samsung-electro-mechanics-america-inc/CL10B105KA8NNNC/1276-1184-1-ND/3889270) | | 
 | 2 | 4.7 uF capacitor 0603 | [Murata GRM188R60J475KE19J](https://www.digikey.com/product-detail/en/murata-electronics-north-america/GRM188R60J475KE19J/490-6407-1-ND/3845604) | | 
 | 7 | 10 uF capacitor 0805 | [Murata GRM21BR61C106KE15L](https://www.digikey.com/product-detail/en/murata-electronics-north-america/GRM21BR61C106KE15L/490-3886-1-ND/965928) | | 
@@ -82,6 +81,7 @@ The bill of materials for this board is:
 | 1 | XCL223 3.3V Regulator | [Torex XCL223A333D2-G](https://www.digikey.com/product-detail/en/torex-semiconductor-ltd/XCL223A333D2-G/893-1416-1-ND/8256118) | $2.63 |
 | 2 | 4.5mm tactile switch | [E-Switch TL3305AF160QG](https://www.digikey.com/product-detail/en/e-switch/TL3305AF160QG/EG5350CT-ND/5816195) | $0.20 |
 | 1 | USB micro B connector | [Amphenol FCI 10118194-0001LF](https://www.digikey.com/products/en?keywords=609-4618-1-nd) | $0.42 | 
+| 1 | JST-PH battery connector | [JST B2B-PH-K-S(LF)(SN)](https://www.digikey.com/product-detail/en/jst-sales-america-inc/B2B-PH-K-S-LF-SN/455-1704-ND/926611) | $0.17 | 
 | 1 | RGB LED 4PLCC | [Cree CLMVC-FKA-CL1D1L71BB7C3C3](https://www.digikey.com/product-detail/en/cree-inc/CLMVC-FKA-CL1D1L71BB7C3C3/CLMVC-FKA-CL1D1L71BB7C3C3CT-ND/9094273 CLMVC-FKA-CL1D1L71BB7C3C3) | $0.19 |
 | 1 | Red LED 0603 5mA | [Lite-On LTST-C193KRKT-5A](https://www.digikey.com/product-detail/en/lite-on-inc/LTST-C193KRKT-5A/160-1830-1-ND/2356251) | $0.41 |
 | 1 | M.2 connector | [TE Connectivity 2199230-4](https://www.digikey.com/product-detail/en/te-connectivity-amp-connectors/2199230-4/A115904CT-ND/4208916) | $1.42 |
