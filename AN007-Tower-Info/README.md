@@ -16,7 +16,7 @@ In the United States, AT&T will often have both 3G and LTE Cat M1 on the same to
 
 The Electron and E Series don't support BLE to connect to the mobile device or laptop and cannot be used. However, since the cellular modems are often the same, you can use a Boron to search for towers and the towers should be the same for an Electron or E Series device.
 
-You'll need to flash the firmware to your Boron. You can use the pre-built binary:
+You'll need to flash the firmware to your Boron. You can download the [prebuilt binary](https://github.com/particle-iot/app-notes/blob/master/AN007-Tower-Info/firmware/firmware.bin) and flash it by USB.
 
 ```
 cd firmware
@@ -24,7 +24,7 @@ particle update
 particle flash --usb firmware.bin
 ```
 
-You can also download **firmware** directory and compile it using Particle Workbench or the Particle CLI.
+You can also download [the **firmware** directory](https://github.com/particle-iot/app-notes/tree/master/AN007-Tower-Info/firmware) and compile it using Particle Workbench or the Particle CLI.
 
 Or, if you want to use the Web IDE, you can click on [this link](https://go.particle.io/shared_apps/5d9aff81688fb200221769e7) to clone the project.
 
