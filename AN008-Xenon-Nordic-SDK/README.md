@@ -138,8 +138,8 @@ You can find several examples of setting up and flashing a device using the nRF 
 The easiest way to restore the Particle firmware is to restore the backup you created earlier.
 
 ```
-nfrjprog -f NRF52 backupcode.hex
-nfrjprog -f NRF52 backupuicr.hex
+nfrjprog -f NRF52 --program backupuicr.hex --chiperase
+nfrjprog -f NRF52 --program backupcode.hex
 ```
 
 If you didn't save a backup, you can back up a different, working Xenon and restore it. It's possible to do it from the software release files, however it's a pain because you need to convert the .bin files from the releases into Intel hex files in order to use nrfjprog. It's easier to just backup and restore the whole device.
