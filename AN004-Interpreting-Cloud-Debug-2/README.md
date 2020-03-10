@@ -7,6 +7,9 @@ This application note is a deep dive into interpreting a complete successful log
 This guide mostly concentrates on cellular issues (Electron, E Series, and Boron).
 
 
+The files for this application note can be found in the [Github repository](https://github.com/particle-iot/app-notes/tree/master/AN004-Interpreting-Cloud-Debug-2) for this project.
+
+
 ## Decoding u-blox AT Commands
 
 In order to decode the u-blox AT commands you'll probably need to use the (somewhat confusing) AT Commands Manual. There are two different versions:

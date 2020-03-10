@@ -10,6 +10,9 @@ This shows the unregulated 12V (top), 5V regulated (middle), and 3V3 from a Boro
 
 ![Smoothed Power](images/smoothing.png)
 
+
+The files for this application note can be found in the [Github repository](https://github.com/particle-iot/app-notes/tree/master/AN006-Vehicle-Power) for this project.
+
 ## Design 1
 
 This design is almost exactly the OpenXC power supply design. It's built in an Adafruit Feather form-factor because it's useful for prototyping new designs and you can easily swap between cellular (Boron) and Wi-Fi (Argon). The design is easily extracted to make it part of your base board for an E Series or B Series SoM as well. Design 3 is an alternative way to lay out this design.

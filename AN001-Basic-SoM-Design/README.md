@@ -19,6 +19,8 @@ As this board doesn't really do much, you'll unlikely use it as-is, but you can 
 
 There is another design in the [SoM first board tutorial](https://docs.particle.io/tutorials/hardware-projects/som-first-board/) that includes additional information that will be useful for building your first board.
 
+The files for this application note can be found in the [Github repository](https://github.com/particle-iot/app-notes/tree/master/AN001-Basic-SoM-Design) for this project.
+
 ## Board
 
 ![Board Features](images/features.png)

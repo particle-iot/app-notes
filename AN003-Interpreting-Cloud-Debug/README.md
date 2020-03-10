@@ -12,6 +12,10 @@ This guide mostly concentrates on cellular issues (Electron, E Series, and Boron
 
 This application note is continued in [AN004 Interpreting Cloud Debug-2](https://github.com/particle-iot/app-notes/tree/master/AN004-Interpreting-Cloud-Debug-2) which is a deep dive into interpreting cloud debug logs and cross-referencing the AT command guide for the u-blox modem.
 
+
+The files for this application note can be found in the [Github repository](https://github.com/particle-iot/app-notes/tree/master/AN003-Interpreting-Cloud-Debug) for this project.
+
+
 ## Troubleshooting
 
 ### Blinking green issues

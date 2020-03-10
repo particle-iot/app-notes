@@ -6,6 +6,9 @@ It uses a Boron 2G/3G to scan for towers and communicates with the device using 
 
 It can also be used with a Boron LTE to find information about the LTE Cat M1 tower you're connected to (but not neighboring towers).
 
+The files for this application note can be found in the [Github repository](https://github.com/particle-iot/app-notes/tree/master/AN007-Tower-Info) for this project.
+
+
 ### The Tower Scanner
 
 The tower scanner can only do scanning for nearby towers on a Boron 2G/3G. Tower scan will only see 2G/3G towers. It should be able to see other GSM carriers, even ones the SIM cannot connect to, but cannot see non-GSM carriers like Verizon and Sprint in the United States. 
