@@ -20,6 +20,9 @@ then automatically power up when restored. This can be useful in automotive appl
 in mains power applications.
 - [AN005 Threading Explainer](https://github.com/particle-iot/app-notes/tree/master/AN005-Threading-Explainer) provides detailed information on using execution threads on Particle devices.
 - [AN008 Using a Xenon with the Nordic SDK](https://github.com/particle-iot/app-notes/tree/master/AN008-Xenon-Nordic-SDK)
+- [AN009 Firmware Examples](https://github.com/particle-iot/app-notes/tree/master/AN009-Firmware-Examples) provides some annotated code examples, including how to effective use sleep modes.
+- [AN010 Finite State Machines](https://github.com/particle-iot/app-notes/tree/master/AN010-Finite-State-Machines) shows some of the ways to effectively structure your code using finite state machines.
+
 
 ### Troubleshooting
 
@@ -39,5 +42,7 @@ interpret cloud debugging logs to troubleshoot various common issues.
 - [AN006 Vehicle Power](https://github.com/particle-iot/app-notes/tree/master/AN006-Vehicle-Power) provides sample designs for powering Particle devices in vehicles.
 - [AN007 Tower Info](https://github.com/particle-iot/app-notes/tree/master/AN007-Tower-Info) is a tool for location nearby cellular towers.
 - [AN008 Using a Xenon with the Nordic SDK](https://github.com/particle-iot/app-notes/tree/master/AN008-Xenon-Nordic-SDK)
+- [AN009 Firmware Examples](https://github.com/particle-iot/app-notes/tree/master/AN009-Firmware-Examples) provides some annotated code examples, including how to effective use sleep modes.
+- [AN010 Finite State Machines](https://github.com/particle-iot/app-notes/tree/master/AN010-Finite-State-Machines) shows some of the ways to effectively structure your code using finite state machines.
 
 
