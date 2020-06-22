@@ -4,7 +4,7 @@ The full code examples for this application note can be found in the [Github rep
 
 If you have relatively small amounts of data to store, and don't want to implement a more complex database scheme, using a Google G Suite spreadsheet might be a good solution. For more complex or large amounts of data using [Google Cloud Datastore or Firebase](https://github.com/rickkas7/sse-examples) might be more appropriate. It's also possible to use a third-party service like IFTTT to save to Google Sheets, but this technique is faster and more reliable.
 
-One bit advantage of using this technique over [Publish to Firebase using webhooks](https://github.com/rickkas7/firebase_tutorial) is that you have the ability to manipulate the data using Google Apps Script (Javascript) before storing it in the sheet. This provides a great flexibility, as shown in some of the examples below.
+One big advantage of using this technique over [Publish to Firebase using webhooks](https://github.com/rickkas7/firebase_tutorial) is that you have the ability to manipulate the data using Google Apps Script (Javascript) before storing it in the sheet. This provides a great flexibility, as shown in some of the examples below.
 
 If you're like to learn more about Google Apps Script, these two resources are a good starting point:
 
