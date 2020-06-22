@@ -14,12 +14,12 @@ If you're like to learn more about Google Apps Script, these two resources are a
 
 Sections:
 
-- Getting Started
-- Mapping Device IDs to Names (manually)
-- Mapping Device IDs to Names (Using Particle Cloud API)
-- One Sheet Per Device
-- Separate Spreadsheets by Device ID
-- Setting Columns by Key
+- [Getting Started](https://github.com/particle-iot/app-notes/tree/master/AN011-Publish-to-Google-Sheets#getting-started)
+- [One Sheet Per Device](https://github.com/particle-iot/app-notes/tree/master/AN011-Publish-to-Google-Sheets#one-sheet-per-device)
+- [Mapping Device IDs to Names (manually)](https://github.com/particle-iot/app-notes/tree/master/AN011-Publish-to-Google-Sheets#mapping-device-ids-to-names-manually)
+- [Mapping Device IDs to Names (Using Particle Cloud API)](https://github.com/particle-iot/app-notes/tree/master/AN011-Publish-to-Google-Sheets#mapping-device-ids-to-names-using-particle-cloud-api)
+- [Separate Spreadsheets by Device ID](https://github.com/particle-iot/app-notes/tree/master/AN011-Publish-to-Google-Sheets#separate-spreadsheets-by-device-id)
+- [Setting Columns by Key](https://github.com/particle-iot/app-notes/tree/master/AN011-Publish-to-Google-Sheets#setting-columns-by-key)
 
 ## Getting Started
 
