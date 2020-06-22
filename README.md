@@ -22,6 +22,7 @@ in mains power applications.
 - [AN008 Using a Xenon with the Nordic SDK](https://github.com/particle-iot/app-notes/tree/master/AN008-Xenon-Nordic-SDK)
 - [AN009 Firmware Examples](https://github.com/particle-iot/app-notes/tree/master/AN009-Firmware-Examples) provides some annotated code examples, including how to effective use sleep modes.
 - [AN010 Finite State Machines](https://github.com/particle-iot/app-notes/tree/master/AN010-Finite-State-Machines) shows some of the ways to effectively structure your code using finite state machines.
+- [AN011 Publish to Google Sheets](https://github.com/particle-iot/app-notes/tree/master/AN011-Publish-to-Google-Sheets) shows how you can publish directly to Google G Suite spreadsheets using webhooks.
 
 
 ### Troubleshooting
@@ -44,5 +45,6 @@ interpret cloud debugging logs to troubleshoot various common issues.
 - [AN008 Using a Xenon with the Nordic SDK](https://github.com/particle-iot/app-notes/tree/master/AN008-Xenon-Nordic-SDK)
 - [AN009 Firmware Examples](https://github.com/particle-iot/app-notes/tree/master/AN009-Firmware-Examples) provides some annotated code examples, including how to effective use sleep modes.
 - [AN010 Finite State Machines](https://github.com/particle-iot/app-notes/tree/master/AN010-Finite-State-Machines) shows some of the ways to effectively structure your code using finite state machines.
+- [AN011 Publish to Google Sheets](https://github.com/particle-iot/app-notes/tree/master/AN011-Publish-to-Google-Sheets) shows how you can publish directly to Google G Suite spreadsheets using webhooks.
 
 
