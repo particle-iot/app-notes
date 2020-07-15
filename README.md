@@ -10,6 +10,8 @@
 Like a Boron it can be powered by LiPo battery, USB, or an external DC supply. It includes: RGB LED, bq24195 PMIC, MAX17043 Fuel Gauge, 
 USB Connector, LiPo Connector (JST-PH), and M.2 SoM Connector.
 - [AN006 Vehicle Power](https://github.com/particle-iot/app-notes/tree/master/AN006-Vehicle-Power) provides sample designs for powering Particle devices in vehicles.
+- [AN012 Tracker 1-Wire](https://github.com/particle-iot/app-notes/tree/master/AN012-Tracker-1Wire) shows how you can add DS18B20 temperature sensors to your Tracker One and interface with 5V I2C devices.
+- [AN013 Tracker GPIO](https://github.com/particle-iot/app-notes/tree/master/AN013-Tracker-GPIO) shows how you can add additional GPIO to your Tracker One using the external M8 connector. It includes both 3.3V and 5V design options, as well.
 
 
 ### Programming techniques
@@ -31,6 +33,13 @@ in mains power applications.
 interpret cloud debugging logs to troubleshoot various common issues.
 - [AN004 Interpreting Cloud Debug-2](https://github.com/particle-iot/app-notes/tree/master/AN004-Interpreting-Cloud-Debug-2) is a deep dive into interpreting cloud debug logs and cross-referencing the AT command guide for the u-blox modem.
 - [AN007 Tower Info](https://github.com/particle-iot/app-notes/tree/master/AN007-Tower-Info) is a tool for location nearby cellular towers.
+- [AN013 Tracker I2C Scanner](https://github.com/particle-iot/app-notes/tree/master/AN014-Tracker-i2c-scanner) is a version of the I2C scanner application for scanning the I2C bus looking for devices designed to work with the Tracker One M8 connector I2C.
+
+### Asset Tracking
+
+- [AN012 Tracker 1-Wire](https://github.com/particle-iot/app-notes/tree/master/AN012-Tracker-1Wire) shows how you can add DS18B20 temperature sensors to your Tracker One and interface with 5V I2C devices.
+- [AN013 Tracker GPIO](https://github.com/particle-iot/app-notes/tree/master/AN013-Tracker-GPIO) shows how you can add additional GPIO to your Tracker One using the external M8 connector. It includes both 3.3V and 5V design options, as well.
+- [AN013 Tracker I2C Scanner](https://github.com/particle-iot/app-notes/tree/master/AN014-Tracker-i2c-scanner) is a version of the I2C scanner application for scanning the I2C bus looking for devices designed to work with the Tracker One M8 connector I2C.
 
 
 ## Numerical List
@@ -46,5 +55,11 @@ interpret cloud debugging logs to troubleshoot various common issues.
 - [AN009 Firmware Examples](https://github.com/particle-iot/app-notes/tree/master/AN009-Firmware-Examples) provides some annotated code examples, including how to effective use sleep modes.
 - [AN010 Finite State Machines](https://github.com/particle-iot/app-notes/tree/master/AN010-Finite-State-Machines) shows some of the ways to effectively structure your code using finite state machines.
 - [AN011 Publish to Google Sheets](https://github.com/particle-iot/app-notes/tree/master/AN011-Publish-to-Google-Sheets) shows how you can publish directly to Google G Suite spreadsheets using webhooks.
+- [AN012 Tracker 1-Wire](https://github.com/particle-iot/app-notes/tree/master/AN012-Tracker-1Wire) shows how you can add DS18B20 temperature sensors to your Tracker One and interface with 5V I2C devices.
+- [AN013 Tracker GPIO](https://github.com/particle-iot/app-notes/tree/master/AN013-Tracker-GPIO) shows how you can add additional GPIO to your Tracker One using the external M8 connector. It includes both 3.3V and 5V design options, as well.
+- [AN013 Tracker I2C Scanner](https://github.com/particle-iot/app-notes/tree/master/AN014-Tracker-i2c-scanner) is a version of the I2C scanner application for scanning the I2C bus looking for devices designed to work with the Tracker One M8 connector I2C.
+
+
+
 
 
