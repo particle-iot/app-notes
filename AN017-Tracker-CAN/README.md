@@ -1,4 +1,4 @@
-# AN015 Tracker CAN
+# AN017 Tracker CAN
 
 The full code examples for this application note can be found in the [Github repository](https://github.com/particle-iot/app-notes/tree/master/AN017-Tracker-CAN) for this project.
 
@@ -480,7 +480,7 @@ else {
 }
 ```
 
-You occasionally need to change the CAN speed (for example to `CAN_250KBPS`), but make sure you leave the last parameter as `MCP_20MHZ`. That speed is determined by the crystal connected to the interface chip on the Tracker SoM.
+You occasionally need to change the CAN bus speed (for example to `CAN_250KBPS`), but make sure you leave the last parameter as `MCP_20MHZ`. That speed is determined by the crystal connected to the interface chip on the Tracker SoM.
 
 If you were making a real product, you might even make the CAN bus speed a cloud configurable parameter.
 

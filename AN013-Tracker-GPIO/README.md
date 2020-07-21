@@ -147,6 +147,8 @@ The MCP23008 is the I2C to GPIO interface chip. It can be run at 3.3V or 5V. The
 
 ![MCP23008](images/mcp23008.png)
 
+While this design uses the 18-SOIC version of the MCP23008, the [AN018 Tracker Level](https://github.com/particle-iot/app-notes/tree/master/AN018-Tracker-Level) uses the 20-QFN-EP package which is smaller. The capabilities and software are the same for both chips.
+
 
 ### Qwiic Connector
 
