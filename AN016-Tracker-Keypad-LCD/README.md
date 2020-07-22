@@ -4,6 +4,14 @@ The full code examples for this application note can be found in the [Github rep
 
 This project demonstrates adding a keypad, LCD character display, DAC, and cloud configuration to the Tracker One using the M8 connector. You probably wouldn't build one of these as is, as it's just a demonstration board, but it is an example of the kinds of things you can add using the M8 connector.
 
+- Using a MAX7360 to read matrix keypads and drive LEDs
+- Using a character LCD display with an I2C interface
+- Interfacing to 5V I2C devices
+- Using an I2C DAC (digital to analog converter), used to handle the contrast for the LCD
+- Implementing cloud-configurable settings (contrast)
+- Adding data to location events (keypad digits)
+- Showing GNSS lock and cloud connection status with custom LEDs
+
 ![Main](images/top.jpg)
 
 ## Connecting

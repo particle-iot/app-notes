@@ -1,4 +1,4 @@
-# AN013 Tracker I2C Scanner
+# AN014 Tracker I2C Scanner
 
 The full code examples for this application note can be found in the [Github repository](https://github.com/particle-iot/app-notes/tree/master/AN014-Tracker-i2c-scanner) for this project.
 
