@@ -106,15 +106,14 @@ The current is configured by the resistor, and at 120 ohms, the current is 10.42
 
 We use this to our advantage with the 240 - 33 ohm sensor and measure the voltage drop across this resistance since the current is constant.
 
-Using Ohm's Law, V=IR, at 240 ohms (tank empty) the voltage drop is 240&ohm; &times; 0.0142A = 3.4V. This is actually slightly above the desired 3.3V but within the specs of the ADC. Expected ADC value around 1652, though experimentally it works out to 1261 with the sensor above.
+Using Ohm's Law, V=IR, at 240 ohms (tank empty) the voltage drop is 240&ohm; &times; 0.01042A = 2.5V. Expected value is 1183, and the measured value with the sensor above was 1261, which is reasonable.
 
-At 33 ohms (tank full) the voltage drop is 33&ohm; &times; 0.0142A = 0.46V. Expected ADC value around 230. Actual value with the sensor above is 256.
+At 33 ohms (tank full) the voltage drop is 33&ohm; &times; 0.01042A = 0.34V. Expected ADC value around 161. Actual value with the sensor above is 256.
 
 When the sensor is disconnected there is no current, so that's fine, however if there is an incorrect resistance above 240 ohms, the voltage at the ADC can exceed the limit. The D1213A (D2) Zener diode + rail-to-rail diodes protects the ADC from excess voltage in this case. It's also a TVS to protect the ADC from surge voltages on the sensor or sensor cable.
 
 The reason the 12V supply is necessary is that the LM317 only works at 5V + load voltage, thus the minimum is 8.3V. 12V is reasonable choice since it may also be useful for other sensors that actually require 12V.
 
-If you don't need a fine resolution, switching the LM317 resistor to 150 ohm limits the current to 8.33 mA and is a bit safer, but with a loss of usable resolution.
 
 ### BoM (Bill of Materials)
 
