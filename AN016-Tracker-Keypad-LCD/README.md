@@ -194,8 +194,6 @@ SerialLogHandler logHandler(115200, LOG_LEVEL_TRACE, {
     { "net.ppp.client", LOG_LEVEL_INFO },
 });
 
-Tracker tracker;
-
 // MAX7360 Keypad and LCD driver, connected by I2C
 MAX7360 keyDriver(0x38, Wire3);
 MAX7360KeyMappingPhone keyMapper;
@@ -238,7 +236,7 @@ void locationGenerationCallback(JSONWriter &writer, LocationPoint &point, const 
 
 void setup()
 {
-    tracker.init();
+    Tracker::instance().init();
 
 	// Turn on CAN power
     pinMode(CAN_PWR, OUTPUT);
@@ -248,10 +246,10 @@ void setup()
     static ConfigObject contrastDesc("lcdkeypad", {
         ConfigInt("contrast", &contrast, 0, 255),
     });
-    tracker.configService.registerModule(contrastDesc);
+    Tracker::instance().configService.registerModule(contrastDesc);
 
     // Callback to add key press information to the location publish
-    tracker.location.regLocGenCallback(locationGenerationCallback);
+    Tracker::instance().location.regLocGenCallback(locationGenerationCallback);
 
     // Set up MAX7306 keypad/LCD driver
 	keyDriver.withKeyMapping(&keyMapper);
@@ -298,7 +296,7 @@ void setup()
 
 void loop()
 {
-    tracker.loop();
+    Tracker::instance().loop();
 
 	MAX7360Key key = keyDriver.readKeyFIFO();
 	if (!key.isEmpty()) {
@@ -333,7 +331,7 @@ void loop()
         
         LocationPoint point;
 
-        tracker.locationService.getLocation(point);
+        Tracker::instance().locationService.getLocation(point);
         if (point.locked) {
             snprintf(gnssBuf, sizeof(gnssBuf), "%.4f,%.4f", point.latitude, point.longitude);
         }
@@ -344,7 +342,7 @@ void loop()
 
     // Red LED = GNSS fix status (on = has fix)
     LocationStatus locStatus;
-    tracker.locationService.getStatus(locStatus);
+    Tracker::instance().locationService.getStatus(locStatus);
     if (wasGnssLocked != locStatus.locked) {
         wasGnssLocked = locStatus.locked;
         keyDriver.setPortPwmRatio(PORT_LED_RED, wasGnssLocked ? 255 : 0);
@@ -379,11 +377,12 @@ void locationGenerationCallback(JSONWriter &writer, LocationPoint &point, const 
 }
 
 
+
 ```
 
 ### Explanation
 
-```
+```cpp
 #include "MAX7360-RK.h"
 #include "MAX47x6-RK.h"
 #include "AMCLCD-RK.h"
@@ -391,7 +390,7 @@ void locationGenerationCallback(JSONWriter &writer, LocationPoint &point, const 
 
 These are the three additional libraries needed for the three I2C devices used in this example. They are the keyboard/LED controller (MAX7360), DAC for contrast control (MAX4706), and character LCD driver (AMCLCD).
 
-```
+```cpp
 // MAX7360 Keypad and LCD driver, connected by I2C
 MAX7360 keyDriver(0x38, Wire3);
 MAX7360KeyMappingPhone keyMapper;
@@ -407,7 +406,7 @@ AMCLCD lcd(lcdModel, 0x3C, Wire3);
 Initialization of the I2C devices and libraries.
 
 
-```
+```cpp
 // Turn on CAN power
 pinMode(CAN_PWR, OUTPUT);
 digitalWrite(CAN_PWR, HIGH);
@@ -415,12 +414,12 @@ digitalWrite(CAN_PWR, HIGH);
 
 This board is powered by the CAN_5V on the M8 connector. It must be turned on, as it defaults to off.
 
-```
+```cpp
 // Set up configuration settings
 static ConfigObject contrastDesc("lcdkeypad", {
     ConfigInt("contrast", &contrast, 0, 255),
 });
-tracker.configService.registerModule(contrastDesc);
+Tracker::instance().configService.registerModule(contrastDesc);
 ```
 
 This adds new settings to the configuration manager. The registers a new object `lcdkeypad` that contains a key/value pair of `contrast` and an integer in the range of 0-255. When the configuration is sent, it might looks like this in JSON:
@@ -433,14 +432,14 @@ This adds new settings to the configuration manager. The registers a new object 
 }
 ```
 
-```
+```cpp
 // Callback to add key press information to the location publish
-tracker.location.regLocGenCallback(locationGenerationCallback);
+Tracker::instance().location.regLocGenCallback(locationGenerationCallback);
 ```
 
 This adds a location generation callback. This is how we add the `keys` to the location publishes.
 
-```
+```cpp
 MAX7360Key key = keyDriver.readKeyFIFO();
 if (!key.isEmpty()) {
     Log.info("rawKey=0x%02x readable=%c", key.getRawKey(), key.getMappedKey());
@@ -448,12 +447,12 @@ if (!key.isEmpty()) {
 
 In `loop()` we check the key FIFO on the MAX7360 to see if a key has been pressed. If it has, it's added to the display.
 
-```
+```cpp
 memset(gnssBuf, ' ', sizeof(gnssBuf) - 1);
 
 LocationPoint point;
 
-tracker.locationService.getLocation(point);
+Tracker::instance().locationService.getLocation(point);
 if (point.locked) {
     snprintf(gnssBuf, sizeof(gnssBuf), "%.4f,%.4f", point.latitude, point.longitude);
 }
@@ -464,9 +463,9 @@ lcd.print(gnssBuf);
 
 This block of code gets the current location from the GNSS, and if locked, updates the LCD display with the new coordinates. If there is no lock, the top display line is cleared, removing the old location (if any).
 
-```
+```cpp
 LocationStatus locStatus;
-tracker.locationService.getStatus(locStatus);
+Tracker::instance().locationService.getStatus(locStatus);
 if (wasGnssLocked != locStatus.locked) {
     wasGnssLocked = locStatus.locked;
     keyDriver.setPortPwmRatio(PORT_LED_RED, wasGnssLocked ? 255 : 0);
@@ -507,7 +506,7 @@ Append the current keys that have been pressed to the location event. This is wh
 
 The cloud configuration cannot be set from the console, but you can set it from the CLI using curl. 
 
-```
+```bash
 curl -X PUT https://api.particle.io/v1/products/:productId/config/:deviceId?access_token=:accessToken -H "Content-Type: application/json" -d "{\"lcdkeypad\":{\"contrast\":10}}"
 ```
 

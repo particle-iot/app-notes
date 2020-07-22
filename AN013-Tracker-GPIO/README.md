@@ -201,8 +201,6 @@ SerialLogHandler logHandler(115200, LOG_LEVEL_INFO, {
     { "net.ppp.client", LOG_LEVEL_INFO },
 });
 
-Tracker tracker;
-
 // When using the M8 connector, use Wire3 (not Wire)
 MCP23008 gpio(Wire3, 0);
 
@@ -218,7 +216,7 @@ void setup()
     delay(1000);
 
     // Initialize the tracker
-    tracker.init();
+    Tracker::instance().init();
 
     // If using the M8 connector, turn on the CAN_5V power
     pinMode(CAN_PWR, OUTPUT);
@@ -234,7 +232,7 @@ void setup()
     }
 
     // Callback to add temperature information to the location publish
-    tracker.location.regLocGenCallback(locationGenerationCallback);
+    Tracker::instance().location.regLocGenCallback(locationGenerationCallback);
 
     // Connect to the Particle cloud now, since we use SEMI_AUTOMATIC mode
     Particle.connect();
@@ -243,14 +241,14 @@ void setup()
 void loop()
 {
     // Always call the tracker and ds loop functions on every loop call
-    tracker.loop();
+    Tracker::instance().loop();
    
     if (gpio.digitalRead(MCP23008::PIN_0) == 0 && millis() - lastGP0 > 2000) {
         lastGP0 = millis();
 
         // Connect GP0 to a push button to GND. When the button is pressed, the location will be published
         Log.info("triggered publish by GP0");
-        tracker.location.triggerLocPub();
+        Tracker::instance().location.triggerLocPub();
     } 
 
     // For outputs, use:

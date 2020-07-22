@@ -203,8 +203,6 @@ SerialLogHandler logHandler(115200, LOG_LEVEL_TRACE, {
     { "net.ppp.client", LOG_LEVEL_INFO },
 });
 
-Tracker tracker;
-
 // MCP23008: 
 // GP0, GP1, GP2: Available on header
 // GP3: Controls 12V boost, HIGH = boost on
@@ -230,13 +228,13 @@ void locationGenerationCallback(JSONWriter &writer, LocationPoint &point, const 
 void setup()
 {
     // Uncomment to make it easier to see the serial logs at startup
-    waitFor(Serial.isConnected, 15000);
-    delay(1000);
+    // waitFor(Serial.isConnected, 15000);
+    // delay(1000);
 
-    tracker.init();
+    Tracker::instance().init();
 
     // Callback to add key press information to the location publish
-    tracker.location.regLocGenCallback(locationGenerationCallback);
+    Tracker::instance().location.regLocGenCallback(locationGenerationCallback);
 
     // Turn on CAN_5V power
     pinMode(CAN_PWR, OUTPUT);
@@ -269,7 +267,7 @@ void setup()
 
 void loop()
 {
-    tracker.loop();
+    Tracker::instance().loop();
 
     if (debugLevelPeriod.count() != 0 && millis() - debugLevelMillis >= debugLevelPeriod.count()) {
         debugLevelMillis = millis();
@@ -300,6 +298,8 @@ void locationGenerationCallback(JSONWriter &writer, LocationPoint &point, const 
     writer.name("level").value(readLevel());
 }
 
+
+
 ```
 
 
@@ -315,7 +315,7 @@ We need to initialize global objects for the GPIO expander and ADC. The ADS1015 
 
 
 ```cpp
-tracker.location.regLocGenCallback(locationGenerationCallback);
+Tracker::instance().location.regLocGenCallback(locationGenerationCallback);
 ```
 
 Since we add the level to location events, we need to register a callback.

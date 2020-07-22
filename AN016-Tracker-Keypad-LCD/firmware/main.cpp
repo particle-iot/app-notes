@@ -37,8 +37,6 @@ SerialLogHandler logHandler(115200, LOG_LEVEL_TRACE, {
     { "net.ppp.client", LOG_LEVEL_INFO },
 });
 
-Tracker tracker;
-
 // MAX7360 Keypad and LCD driver, connected by I2C
 MAX7360 keyDriver(0x38, Wire3);
 MAX7360KeyMappingPhone keyMapper;
@@ -81,7 +79,7 @@ void locationGenerationCallback(JSONWriter &writer, LocationPoint &point, const 
 
 void setup()
 {
-    tracker.init();
+    Tracker::instance().init();
 
 	// Turn on CAN power
     pinMode(CAN_PWR, OUTPUT);
@@ -91,10 +89,10 @@ void setup()
     static ConfigObject contrastDesc("lcdkeypad", {
         ConfigInt("contrast", &contrast, 0, 255),
     });
-    tracker.configService.registerModule(contrastDesc);
+    Tracker::instance().configService.registerModule(contrastDesc);
 
     // Callback to add key press information to the location publish
-    tracker.location.regLocGenCallback(locationGenerationCallback);
+    Tracker::instance().location.regLocGenCallback(locationGenerationCallback);
 
     // Set up MAX7306 keypad/LCD driver
 	keyDriver.withKeyMapping(&keyMapper);
@@ -141,7 +139,7 @@ void setup()
 
 void loop()
 {
-    tracker.loop();
+    Tracker::instance().loop();
 
 	MAX7360Key key = keyDriver.readKeyFIFO();
 	if (!key.isEmpty()) {
@@ -176,7 +174,7 @@ void loop()
         
         LocationPoint point;
 
-        tracker.locationService.getLocation(point);
+        Tracker::instance().locationService.getLocation(point);
         if (point.locked) {
             snprintf(gnssBuf, sizeof(gnssBuf), "%.4f,%.4f", point.latitude, point.longitude);
         }
@@ -187,7 +185,7 @@ void loop()
 
     // Red LED = GNSS fix status (on = has fix)
     LocationStatus locStatus;
-    tracker.locationService.getStatus(locStatus);
+    Tracker::instance().locationService.getStatus(locStatus);
     if (wasGnssLocked != locStatus.locked) {
         wasGnssLocked = locStatus.locked;
         keyDriver.setPortPwmRatio(PORT_LED_RED, wasGnssLocked ? 255 : 0);

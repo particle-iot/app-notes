@@ -38,26 +38,36 @@ Note that CAN bus is differential and consists of two lines:
 
 As the signals are differential you don't need to connect GND for CAN bus.
 
+### Getting the Tracker Edge Firmware
+
+The Tracker Edge firmware can be downloaded from Github:
+
+[https://github.com/particle-iot/tracker-edge](https://github.com/particle-iot/tracker-edge)
+
+After downloading the source, you will need to fetch the library dependencies. This can be done from a command prompt or terminal window with the git command line tools installed:
+
+```
+cd tracker-edge
+git submodule init
+git submodule update --recursive
+```
+
+Be sure to target 1.5.4-rc.1 or later for your build. Device OS 1.5.3 or later is required, only version 1.5.4-rc.1 and later are available in the full set of tools including Workbench, CLI, and Web IDE.
+
+### Add the libraries
+
+From the command palette in Workbench, **Particle: Install Library** then enter **MCP_CAN_RK**. 
+
+If you prefer to edit project.properties directly:
+
+```
+dependencies.MCP_CAN_RK=1.5.1
+```
+
 
 ## Full Source
 
 ```cpp
-/*
- * Copyright (c) 2020 Particle Industries, Inc.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 #include "Particle.h"
 
 #include "tracker_config.h"
@@ -80,8 +90,6 @@ SerialLogHandler logHandler(115200, LOG_LEVEL_TRACE, {
     { "net.ppp.client", LOG_LEVEL_INFO },
 });
 
-Tracker tracker;
-
 // Various OBD-II (CAN) constants
 const uint8_t SERVICE_CURRENT_DATA = 0x01; // also known as mode 1
 
@@ -97,9 +105,9 @@ const uint8_t PID_VEHICLE_SPEED       = 0x0D;
 // This is the request we make by OBD-II. It's always the same and requests the engine RPM.
 byte obdRequest[8] = {0x02, SERVICE_CURRENT_DATA, PID_ENGINE_RPM, 0xcc, 0xcc, 0xcc, 0xcc, 0xcc};
 
-// How often to request the data by CAN
+// How often to request the data by CAN in milliseconds
 unsigned long requestLastMillis = 0;
-const unsigned long requestPeriod = 100; // 10 times per second
+const unsigned long requestPeriod = 100; // in milliseconds (10 times per second)
 
 // Various engine stats that we maintain
 int lastRPM = 0;
@@ -136,17 +144,17 @@ void setup()
     // delay(1000);
 
     // Initialize tracker stuff
-    tracker.init();
+    Tracker::instance().init();
 
     // Callback to add key press information to the location publish
-    tracker.location.regLocGenCallback(locationGenerationCallback);
+    Tracker::instance().location.regLocGenCallback(locationGenerationCallback);
 
     // Set up configuration settings
     static ConfigObject engineDesc("engine", {
         ConfigInt("idle", &idleRPM, 0, 10000),
         ConfigInt("fastpub", &fastPublishPeriod, 0, 3600000),
     });
-    tracker.configService.registerModule(engineDesc);
+    Tracker::instance().configService.registerModule(engineDesc);
 
     Log.info("idleRPM=%d fastPublishPeriod=%d", idleRPM, fastPublishPeriod);
 
@@ -189,7 +197,7 @@ void setup()
 void loop()
 {
     // Must call this on every loop
-    tracker.loop();
+    Tracker::instance().loop();
 
     // Handle received CAN data
     if (!digitalRead(CAN_INT)) {
@@ -290,7 +298,7 @@ void loop()
             lastFastPublish = millis();
 
             Log.info("manual publish lastRPM=%d idleRPM=%d period=%d", lastRPM, idleRPM, fastPublishPeriod);
-            tracker.location.triggerLocPub();
+            Tracker::instance().location.triggerLocPub();
         }
     }
 
@@ -409,10 +417,10 @@ This is the library interface to the CAN controller chip. Of note:
 
 ```cpp
 // Initialize tracker stuff
-tracker.init();
+Tracker::instance().init();
 
 // Callback to add key press information to the location publish
-tracker.location.regLocGenCallback(locationGenerationCallback);
+Tracker::instance().location.regLocGenCallback(locationGenerationCallback);
 ```
 
 Initialize the Tracker Edge library and register a callback function to be called to add information to location publishes.
@@ -423,7 +431,7 @@ static ConfigObject engineDesc("engine", {
     ConfigInt("idle", &idleRPM, 0, 10000),
     ConfigInt("fastpub", &fastPublishPeriod, 0, 3600000),
 });
-tracker.configService.registerModule(engineDesc);
+Tracker::instance().configService.registerModule(engineDesc);
 ```
 
 This is how you connect variables (`idleRPM` and `fastPublishPeriod`) to the configuration service. You specify a top level key and any sub-keys. 
@@ -495,10 +503,10 @@ Make sure you always set the CAN mode to `MCP_NORMAL`!
 
 ```cpp
 // Must call this on every loop
-tracker.loop();
+Tracker::instance().loop();
 ```
 
-Make sure you call `tracker.loop()` on every call to `loop()`.
+Make sure you call `Tracker::instance().loop()` on every call to `loop()`.
 
 
 ```cpp
@@ -637,7 +645,7 @@ if (Particle.connected() && lastRPM >= idleRPM) {
         lastFastPublish = millis();
 
         Log.info("manual publish lastRPM=%d idleRPM=%d period=%d", lastRPM, idleRPM, fastPublishPeriod);
-        tracker.location.triggerLocPub();
+        Tracker::instance().location.triggerLocPub();
     }
 }
 ```

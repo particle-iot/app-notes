@@ -36,8 +36,6 @@ SerialLogHandler logHandler(115200, LOG_LEVEL_TRACE, {
     { "net.ppp.client", LOG_LEVEL_INFO },
 });
 
-Tracker tracker;
-
 // Various OBD-II (CAN) constants
 const uint8_t SERVICE_CURRENT_DATA = 0x01; // also known as mode 1
 
@@ -92,17 +90,17 @@ void setup()
     // delay(1000);
 
     // Initialize tracker stuff
-    tracker.init();
+    Tracker::instance().init();
 
     // Callback to add key press information to the location publish
-    tracker.location.regLocGenCallback(locationGenerationCallback);
+    Tracker::instance().location.regLocGenCallback(locationGenerationCallback);
 
     // Set up configuration settings
     static ConfigObject engineDesc("engine", {
         ConfigInt("idle", &idleRPM, 0, 10000),
         ConfigInt("fastpub", &fastPublishPeriod, 0, 3600000),
     });
-    tracker.configService.registerModule(engineDesc);
+    Tracker::instance().configService.registerModule(engineDesc);
 
     Log.info("idleRPM=%d fastPublishPeriod=%d", idleRPM, fastPublishPeriod);
 
@@ -145,7 +143,7 @@ void setup()
 void loop()
 {
     // Must call this on every loop
-    tracker.loop();
+    Tracker::instance().loop();
 
     // Handle received CAN data
     if (!digitalRead(CAN_INT)) {
@@ -246,7 +244,7 @@ void loop()
             lastFastPublish = millis();
 
             Log.info("manual publish lastRPM=%d idleRPM=%d period=%d", lastRPM, idleRPM, fastPublishPeriod);
-            tracker.location.triggerLocPub();
+            Tracker::instance().location.triggerLocPub();
         }
     }
 

@@ -14,7 +14,7 @@ USB Connector, LiPo Connector (JST-PH), and M.2 SoM Connector.
 - [AN013 Tracker GPIO](https://github.com/particle-iot/app-notes/tree/master/AN013-Tracker-GPIO) shows how you can add additional GPIO to your Tracker One using the external M8 connector. It includes both 3.3V and 5V design options, as well.
 - [AN015 Tracker Breakout](https://github.com/particle-iot/app-notes/tree/master/AN015-Tracker-Breakout) is a simple breakout board to help prototype using the Tracker One M8 connector.
 - [AN016 Tracker Keypad LCD](https://github.com/particle-iot/app-notes/tree/master/AN016-Tracker-Keypad-LCD) demonstrates adding a keypad, LCD character display, DAC, and cloud configuration to the Tracker One using the M8 connector.
-- [AN018 Tracker Level](https://github.com/particle-iot/app-notes/tree/master/AN018-Tracker-Level) shows how to expand the Tracker One via the M8 connector including additional GPIO, ADC, a 240-33 ohm tank level sensor input, and a 12 VDC boost converter.
+- [AN018 Tracker Tank Level Sensor](https://github.com/particle-iot/app-notes/tree/master/AN018-Tracker-Level) shows how to expand the Tracker One via the M8 connector including additional GPIO, ADC, a 240-33 ohm tank level sensor input, and a 12 VDC boost converter.
 
 
 ### Programming techniques
@@ -45,7 +45,7 @@ interpret cloud debugging logs to troubleshoot various common issues.
 - [AN014 Tracker I2C Scanner](https://github.com/particle-iot/app-notes/tree/master/AN014-Tracker-i2c-scanner) is a version of the I2C scanner application for scanning the I2C bus looking for devices designed to work with the Tracker One M8 connector I2C.
 - [AN016 Tracker Keypad LCD](https://github.com/particle-iot/app-notes/tree/master/AN016-Tracker-Keypad-LCD) demonstrates adding a keypad, LCD character display, DAC, and cloud configuration to the Tracker One using the M8 connector.
 - [AN017 Tracker CAN](https://github.com/particle-iot/app-notes/tree/master/AN017-Tracker-CAN) shows how to use the CAN bus for OBD-II to retrieve engine RPM and other useful techniques you may want to use in your own projects.
-- [AN018 Tracker Level](https://github.com/particle-iot/app-notes/tree/master/AN018-Tracker-Level) shows how to expand the Tracker One via the M8 connector including additional GPIO, ADC, a 240-33 ohm tank level sensor input, and a 12 VDC boost converter.
+- [AN018 Tracker Tank Level Sensor](https://github.com/particle-iot/app-notes/tree/master/AN018-Tracker-Level) shows how to expand the Tracker One via the M8 connector including additional GPIO, ADC, a 240-33 ohm tank level sensor input, and a 12 VDC boost converter.
 
 
 ## Numerical List
@@ -67,6 +67,6 @@ interpret cloud debugging logs to troubleshoot various common issues.
 - [AN015 Tracker Breakout](https://github.com/particle-iot/app-notes/tree/master/AN015-Tracker-Breakout) is a simple breakout board to help prototype using the Tracker One M8 connector.
 - [AN016 Tracker Keypad LCD](https://github.com/particle-iot/app-notes/tree/master/AN016-Tracker-Keypad-LCD) demonstrates adding a keypad, LCD character display, DAC, and cloud configuration to the Tracker One using the M8 connector.
 - [AN017 Tracker CAN](https://github.com/particle-iot/app-notes/tree/master/AN017-Tracker-CAN) shows how to use the CAN bus for OBD-II to retrieve engine RPM and other useful techniques you may want to use in your own projects.
-- [AN018 Tracker Level](https://github.com/particle-iot/app-notes/tree/master/AN018-Tracker-Level) shows how to expand the Tracker One via the M8 connector including additional GPIO, ADC, a 240-33 ohm tank level sensor input, and a 12 VDC boost converter.
+- [AN018 Tracker Tank Level Sensor](https://github.com/particle-iot/app-notes/tree/master/AN018-Tracker-Level) shows how to expand the Tracker One via the M8 connector including additional GPIO, ADC, a 240-33 ohm tank level sensor input, and a 12 VDC boost converter.
 
 

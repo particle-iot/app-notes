@@ -156,8 +156,6 @@ SerialLogHandler logHandler(115200, LOG_LEVEL_INFO, {
     { "net.ppp.client", LOG_LEVEL_INFO },
 });
 
-Tracker tracker;
-
 // When using the M8 connector, use Wire3 (not Wire)
 DS2482 ds(Wire3, 0);
 
@@ -175,11 +173,11 @@ void locationGenerationCallback(JSONWriter &writer, LocationPoint &point, const 
 void setup()
 {      
     // Optional: Enable to make it easier to see debug USB serial messages at startup
-    waitFor(Serial.isConnected, 15000);
-    delay(1000);
+    // waitFor(Serial.isConnected, 15000);
+    // delay(1000);
 
     // Initialize the tracker
-    tracker.init();
+    Tracker::instance().init();
 
     // If using the M8 connector, turn on the CAN_5V power
     pinMode(CAN_PWR, OUTPUT);
@@ -191,7 +189,7 @@ void setup()
     doScan = true;
 
     // Callback to add temperature information to the location publish
-    tracker.location.regLocGenCallback(locationGenerationCallback);
+    Tracker::instance().location.regLocGenCallback(locationGenerationCallback);
 
     // Particle function to rescan the 1-Wire bus
     Particle.function("scan", scanFunction);
@@ -203,7 +201,7 @@ void setup()
 void loop()
 {
     // Always call the tracker and ds loop functions on every loop call
-    tracker.loop();
+    Tracker::instance().loop();
     ds.loop();
 
     if (doScan) {
@@ -282,6 +280,7 @@ void locationGenerationCallback(JSONWriter &writer, LocationPoint &point, const 
         Log.info("no temperature");
     }
 }
+
 ```
 
 ### Digging In
@@ -310,7 +309,7 @@ Particle.function("scan", scanFunction);
 Make sure you call the loop functions for both the tracker and the DS2482 (`ds`).
 
 ```cpp
-tracker.loop();
+Tracker::instance().loop();
 ds.loop();
 ```
 
@@ -368,7 +367,7 @@ If you're monitoring the USB debug serial log, you'll see something like:
 ```
 
 
-Note that we don't need to have a mutex around the access to `deviceList` because it's actually done from either `ds.loop()` or `tracker.loop()` and they will never run simultaneously.
+Note that we don't need to have a mutex around the access to `deviceList` because it's actually done from either `ds.loop()` or `Tracker::instance().loop()` and they will never run simultaneously.
 
 ## Cloud Data
 
