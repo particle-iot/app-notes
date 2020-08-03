@@ -33,6 +33,8 @@ Connect the outer pins to 3V3 and GND. Connect the inner (wiper) to A0, the oran
 
 Note that the CAN interface is powered by VIN, which is only powered when using USB power. On the Electron, you can't power using LiPo as 5V is required for the CAN interface.
 
+On this board, it's also necessary to put a jumper on J1. That's the CAN termination resistor enable, and there should be a termination resistor on both ends of the CAN bus.
+
 - [Female J1962 cable](https://www.amazon.com/dp/B07F16HC12/ref=nav_timeline_asin?_encoding=UTF8) ($7.99)
 
 | Pin   | Purpose | Color |
