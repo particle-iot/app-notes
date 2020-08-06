@@ -8,9 +8,26 @@ The full code examples for this application note can be found in the [Github rep
 
 ### Using the M8 connector
 
-The M8 (8mm) 8-pin connector is standard, however it's not common. Some other connectors like M12 are more common, however, the 12mm connector would have required a taller enclosure to fit the larger connector. To simplify designs, Particle will provide a M8 female-to-wires cable, similar to this. This is for illustration only and the design may vary in the future.
+The M8 (8mm) 8-pin connector is standard, however it's not common. Some other connectors like M12 are more common, however, the 12mm connector would have required a taller enclosure to fit the larger connector. To simplify designs, Particle will provide a M8 female-to-wires cable, similar to this. 
 
 ![M8 cable](images/m8-cable.jpg)
+
+The color code and pin assignments for this cable are:
+
+| PHR-8 Pin | M8 Pin | Function  | Color          |
+| :-------- | :----- | :-------- | :------------- |
+| 1         | 2      | VIN       | Red            |
+| 2         | 1      | CAN_P     | Yellow         | 
+| 3         | 7      | CAN_N     | Blue           | 
+| 4         | 6      | CAN_5V    | Orange         | 
+| 5         | 5      | TX_SCL_D9 | Brown          | 
+| 6         | 4      | TX_SDA_D8 | Green          | 
+| 7         | 3      | A3        | White          | 
+| 8         | 8      | GND       | Black          | 
+
+![M8 Wire End](images/M8-connector-wire-end.png)
+
+This is the view looking into the female M8 8-pin connector at the end of the M8 to flying leads cable. 
 
 The common use case will be to include a cable gland in your expansion enclosure, pass the wires through the gland, and terminate them on your custom expansion board.
 
@@ -100,9 +117,16 @@ The design files for Eagle CAD are included in the **eagle** subdirectory.
 | 1 | J4 | QWIIC JST 4-pin 1mm | [Sparkfun](https://www.sparkfun.com/products/14417) | $0.50 | 2 |
 | 1 | J5 | 6x2 female header SMD | [Sullins NPPC062KFMS-RC](https://www.digikey.com/product-detail/en/sullins-connector-solutions/NPPC062KFMS-RC/S5715-ND/776174) | $1.75 |  |
 | 1 | J7 | Term Block 8x0.1" PTH | [On Shore OSTVN08A150](https://www.digikey.com/product-detail/en/on-shore-technology-inc/OSTVN08A150/ED10566-ND/1588868) | $2.36 | 6 |
-| 2 | | Shorting jumper 2x1 0.1" | [Hirose](https://www.digikey.com/product-detail/en/sullins-connector-solutions/QPC02SXGN-RC/S9337-ND/2618262) | $0.13 | 7 |
-| 2 | | Male header pins 0.1" | [Sullins PRPC040SAAN-RC](https://www.digikey.com/product-detail/en/PRPC040SAAN-RC/S1011EC-40-ND/2775214) | | 7 |
+| 2 | | Shorting jumper 2x1 0.1" | [Hirose](https://www.digikey.com/product-detail/en/sullins-connector-solutions/QPC02SXGN-RC/S9337-ND/2618262) | $0.13 | 5 |
+| 2 | | Male header pins 0.1" | [Sullins PRPC040SAAN-RC](https://www.digikey.com/product-detail/en/PRPC040SAAN-RC/S1011EC-40-ND/2775214) | | 5 |
 
+Choose one of:
+
+| Quantity | Part | Description | Example | Cost | 
+| :---: | :--- | :--- | :--- | ---: | 
+| 1 | J3 | Conn SMD 8 position 2.00mm | [JST B8B-PH-SM4-TB(LF)(SN)](https://www.digikey.com/product-detail/en/jst-sales-america-inc/B8B-PH-SM4-TB-LF-SN/455-1740-1-ND/926837) | $1.00 | 
+|   | J7 | Male Header Pins (8x0.1") | [Sullins PRPC040SAAN-RC](https://www.digikey.com/product-detail/en/PRPC040SAAN-RC/S1011EC-40-ND/2775214) | |
+| 1 | J7 | Screw Terminal Block 8x0.1" PTH | [On Shore OSTVN08A150](https://www.digikey.com/product-detail/en/on-shore-technology-inc/OSTVN08A150/ED10566-ND/1588868) | $2.36 |
 
 
 Notes:
@@ -111,9 +135,7 @@ Notes:
 - (2) DNP if the Qwiic I2C connector is not needed.
 - (3) DNP if power in (VIN) is not required.
 - (4) DNP if CAN BUS is not required.
-- (5) DNP if using screw terminals or soldering wire-to-board.
-- (6) DNP if using B8B-PH or soldering wire-to-board.
-- (7) DNP if not using I2C pull-ups. They are not needed if using Qwiic or serial.
+- (5) DNP if not using I2C pull-ups. They are not needed if using Qwiic or serial.
 - DNP = Do not populate, omit this component.
 
 ### Regulator
