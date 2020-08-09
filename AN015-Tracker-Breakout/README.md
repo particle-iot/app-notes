@@ -56,7 +56,7 @@ This is a simple design to help prototype expanding the Tracker One using the M8
 3. Female header to connect prototyping wires
 4. CAN bus screw terminal connector
 5. Qwiic I2C connector (JST 4-pin 1mm)
-6. VIN power input (4.5V to 30V DC)
+6. VIN power input (6.0V to 30V DC at 2A)
 7. I2C pull-up resistor jumpers (optional)
 8. 3.3V power supply from CAN_5V (XCL224)
 
