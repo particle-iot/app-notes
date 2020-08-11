@@ -56,7 +56,19 @@ The ADC is a ADC1015, a quad I2C ADC. In order to support 4 channels it's used i
 
 The sensing circuit is identical to the single, but there are 4 of them.
 
-The sense resistor is connected low-side, to ground, so it can be measured with a single-ended ADC. A 100 ohm resistor is used so the maximum current of 30 mA will have a voltage of 3.0V across the sense resistor, within the capabilities of the ADC.
+The sense resistor is connected low-side, to ground, so it can be measured with a single-ended ADC. 
+
+This design uses a 10 ohm sense resistor, since the ADS1015 has programmable gain control. The ADS 1015 is run in PGA16 mode (+/- 0.256V). 
+
+| Current | ADC Value | Description   |
+| ------: | --------: | :------------ |
+| 0 mA    | 0         | Open Circuit  |
+| 4 mA    | 318       | Minimum Value |
+| 20 mA   | 1602      | Maximum Value |
+| 30 mA   | 2048      | Short circuit |
+
+
+Originally, I used a 100 ohm resistor is used so the maximum current of 30 mA will have a voltage of 3.0V across the sense resistor, within the capabilities of the ADC but using 10 ohm uses more of the usable range of the ADC. For the 100 ohm sense resistor, the ADS 1015 is run in PGA1 mode (+/-4.096V). This means 3.3V is approximately 1652.
 
 | Current | Voltage | ADC Value | Description   |
 | ------: | ------: | --------: | :------------ |
@@ -65,7 +77,6 @@ The sense resistor is connected low-side, to ground, so it can be measured with 
 | 20 mA   |  2.0 V  | 1004      | Maximum Value |
 | 30 mA   |  3.0 V  | 1506      | Short circuit |
 
-The ADS 1015 is run in PGA1 mode (+/-4.096V). This means 3.3V is approximately 1652.
 
 ### Board Layout - Quad
 
@@ -82,7 +93,7 @@ The ADS 1015 is run in PGA1 mode (+/-4.096V). This means 3.3V is approximately 1
 | 1 | D6 | DIODE SCHOTTKY 40V 1A POWERMITE | [ON Semiconductor MBRM140T3G](https://www.digikey.com/product-detail/en/on-semiconductor/MBRM140T3G/MBRM140T3GOSCT-ND/917997) | $0.36 |
 | 1 | J4 | TERM BLK 2POS SIDE ENT 3.5MM | [On Shore OSTTE020161M](https://www.digikey.com/products/en?keywords=ED2635-ND) | $0.67 | 
 | 1 | L1 | FIXED IND 10UH 1A 276 MOHM SMD | [Bourns SRN3015-100M](https://www.digikey.com/product-detail/en/bourns-inc/SRN3015-100M/SRN3015-100MCT-ND/2756149) | $0.46 |
-| 4 | R1 - R4 | RES SMD 100 OHM 5% 1/10W 0603 | [Panasonic ERJ-3GEYJ101V](https://www.digikey.com/product-detail/en/panasonic-electronic-components/ERJ-3GEYJ101V/P100GCT-ND/134714) | |
+| 4 | R1 - R4 | RES SMD 10 OHM 1% 1/10W 0603 | [Panasonic ERJ-3EKF10R0V](https://www.digikey.com/product-detail/en/panasonic-electronic-components/ERJ-3EKF10R0V/P10-0HCT-ND/198100) | |
 | 3 | R5, R6, R7 | RES SMD 10K OHM 5% 1/4W 0603 | [Panasonic ERJ-PA3J103V](https://www.digikey.com/product-detail/en/panasonic-electronic-components/ERJ-PA3J103V/P10KBZCT-ND/5036237) | | 
 | 1 | R9 | RES SMD 18.2K OHM 0.1% 1/5W 0603 | [Panasonic ERJ-PB3B1822V](https://www.digikey.com/product-detail/en/panasonic-electronic-components/ERJ-PB3B1822V/P20114CT-ND/6214369) | $0.25 | 
 | 1 | R10 | RES SMD 1K OHM 0.5% 1/5W 0603 | [Panasonic ERJ-PB3D1001V](https://www.digikey.com/product-detail/en/panasonic-electronic-components/ERJ-PB3D1001V/P20283CT-ND/6214538) |  | 
@@ -143,7 +154,7 @@ From the command palette in Workbench, **Particle: Install Library** then enter 
 If you prefer to edit project.properties directly, add these:
 
 ```
-dependencies.Sensor_4_20mA_RK=0.0.1
+dependencies.Sensor_4_20mA_RK=0.0.2
 dependencies.SparkFun_ADS1015_Arduino_Library=2.3.0
 ```
 
@@ -201,7 +212,7 @@ void setup()
     Wire3.begin();
 
     sensor
-        .withADS1015(100, ADS1015_ADDRESS_GND, Wire3)
+        .withADS1015(100, ADS1015_CONFIG_PGA_16, 318, 1602, ADS1015_ADDRESS_GND, Wire3)
         .withConfig(sensorConfig, NUM_SENSOR_CONFIG)
         .init();
 
@@ -264,12 +275,26 @@ More information about the configuration object can be found in the [4-20mA libr
 
 ```cpp
 sensor
-    .withADS1015(100, ADS1015_ADDRESS_GND, Wire3)
+    .withADS1015(100, ADS1015_CONFIG_PGA_16, 318, 1602, ADS1015_ADDRESS_GND, Wire3)
     .withConfig(sensorConfig, NUM_SENSOR_CONFIG)
     .init();
 ```
 
-This is the initialization of the 4-20mA sensor library. It's set to use an ADS1015. The first parameter is the virtual sensor pin number from the `SensorConfig` object, 100. The second parameter is the I2C address (0x48). The last parameter is the I2C interface that it's connected to. In this case, `Wire3`, the multi-function pins on the M8 connector.
+The parameters to `withADS1015()` are:
+
+- Since the ADC1015 ADCs don't have pin numbers (in the analogRead() sense), we assign them virtual pin numbers, which typically start at 100. They don't need to be contiguous. Each ADS1015 has 4 ADCs, so it always uses 4 virtual pins, even if you don't use all 4 ADCs. An 8-channel ADC would use 8. The value 100 is the virtual pin number to start with for that ADC. This must match the config structure, above.
+
+- `ADS1015_CONFIG_PGA_16` is the gain setting for the ADC for a 10 ohm sense resistor. 
+
+- 318 is the ADC value for 4 mA (`adcValue4mA`) when using a 10 ohm sense resistor. See table below.
+
+- 1602 is the ADC value for 20 mA (`adcValue20mA`).
+
+| Parameter | 10 ohm | 100 ohm |
+| :--- | :--- | :--- |
+| `gain` | `ADS1015_CONFIG_PGA_16` | `ADS1015_CONFIG_PGA_1` |
+| `adcValue4mA` | 318 | 199 |
+| `adcValue20mA` | 1602 | 1004 |
 
 
 ```cpp
@@ -280,3 +305,9 @@ void locationGenerationCallback(JSONWriter &writer, LocationPoint &point, const 
 ```
 
 This adds the keys defined in the `SensorConfig` to the location publishes.
+
+## Revision History
+
+### 0.0.2 (2020-08-11)
+
+- Changed the sense resistor from 100 ohm to 10 ohm, since the ADS1015 has built-in gain control

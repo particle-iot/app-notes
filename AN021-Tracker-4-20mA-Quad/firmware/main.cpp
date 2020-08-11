@@ -33,8 +33,8 @@ void locationGenerationCallback(JSONWriter &writer, LocationPoint &point, const 
 void setup()
 {
     // Uncomment to make it easier to see the serial logs at startup
-    waitFor(Serial.isConnected, 15000);
-    delay(1000);
+    // waitFor(Serial.isConnected, 15000);
+    // delay(1000);
 
     Tracker::instance().init();
 
@@ -49,7 +49,7 @@ void setup()
     Wire3.begin();
 
     sensor
-        .withADS1015(100, ADS1015_ADDRESS_GND, Wire3)
+        .withADS1015(100, ADS1015_CONFIG_PGA_16, 318, 1602, ADS1015_ADDRESS_GND, Wire3)
         .withConfig(sensorConfig, NUM_SENSOR_CONFIG)
         .init();
 

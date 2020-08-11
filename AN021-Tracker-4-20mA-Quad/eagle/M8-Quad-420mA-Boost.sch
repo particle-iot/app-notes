@@ -1154,20 +1154,20 @@ https://www.digikey.com/products/en?keywords=ED2635-ND&lt;br&gt;</description>
 <part name="D1" library="rickk2" deviceset="DIODE-TVS-SMAJ26A" device="" value="SMAJ26A"/>
 <part name="GND5" library="rickk2" deviceset="GND" device=""/>
 <part name="U1" library="rickk2" deviceset="MAX14626" device="" value="MAX14626"/>
-<part name="R1" library="rickk2" deviceset="RES-100-0603.DEV" device="" value="100"/>
+<part name="R1" library="rickk2" deviceset="RES-100-0603.DEV" device="" value="10"/>
 <part name="SUPPLY8" library="rickk2" deviceset="24V" device="" value="24V"/>
 <part name="D2" library="rickk2" deviceset="DIODE-TVS-SMAJ26A" device="" value="SMAJ26A"/>
 <part name="GND6" library="rickk2" deviceset="GND" device=""/>
 <part name="U2" library="rickk2" deviceset="MAX14626" device="" value="MAX14626"/>
-<part name="R2" library="rickk2" deviceset="RES-100-0603.DEV" device="" value="100"/>
+<part name="R2" library="rickk2" deviceset="RES-100-0603.DEV" device="" value="10"/>
 <part name="D3" library="rickk2" deviceset="DIODE-TVS-SMAJ26A" device="" value="SMAJ26A"/>
 <part name="GND7" library="rickk2" deviceset="GND" device=""/>
 <part name="U3" library="rickk2" deviceset="MAX14626" device="" value="MAX14626"/>
-<part name="R3" library="rickk2" deviceset="RES-100-0603.DEV" device="" value="100"/>
+<part name="R3" library="rickk2" deviceset="RES-100-0603.DEV" device="" value="10"/>
 <part name="D4" library="rickk2" deviceset="DIODE-TVS-SMAJ26A" device="" value="SMAJ26A"/>
 <part name="GND8" library="rickk2" deviceset="GND" device=""/>
 <part name="U4" library="rickk2" deviceset="MAX14626" device="" value="MAX14626"/>
-<part name="R4" library="rickk2" deviceset="RES-100-0603.DEV" device="" value="100"/>
+<part name="R4" library="rickk2" deviceset="RES-100-0603.DEV" device="" value="10"/>
 <part name="U8" library="rickk2" deviceset="AP3012" device="" value="AP3012"/>
 <part name="L2" library="rickk2" deviceset="INDUCTOR-10UH" device="" value="10uH"/>
 <part name="R9" library="rickk2" deviceset="RES-18.2K-0603" device="0603" value="18.2K"/>
