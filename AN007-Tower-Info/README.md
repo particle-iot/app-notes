@@ -51,10 +51,8 @@ It does not work on other browsers like Firefox, Safari, Edge, and Internet Expl
 
 It might work on some versions of Opera for Mac, Windows, Linux and Android. 
 
-Go here to view the display: [https://docs.particle.io/towerinfo](https://docs.particle.io/towerinfo)
-
 - Load the firmware above on your Boron. It should breathe dark blue (2G/3G) or cyan (LTE).
-- Just navigate to [this page](https://docs.particle.io/towerinfo) on your mobile device, tablet, or laptop.
+- Just navigate to [this page](https://rickkas7.github.io/TowerInfo) on your mobile device, tablet, or laptop.
 - Click the **Start** button.
 - Select the Boron from the dialog.
 - Wait for the results to come in! It takes about 2 minutes for 2G/3G.
