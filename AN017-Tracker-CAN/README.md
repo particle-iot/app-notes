@@ -15,7 +15,9 @@ It also includes a number of techniques that will be useful in many more applica
 - Adjusting the location publish rate based on criterial (such as when the engine is running faster than idle).
 - Using cloud-configurable parameters. In this example, the engine idle speed and frequency to publish when engine is running fast.
 
-Note: This is a preliminary version of this app note that uses an external library [MCP_CAN_RK](https://github.com/rickkas7/MCP_CAN_RK) which is a fork of [MCP_CAN_lib](https://github.com/coryjfowler/MCP_CAN_lib) with some Particle-specific additions. In the future, there will be a built-in official CAN library, but it should be similar to this API. The downside of MCP_CAN_lib is that's it's LGPL licensed, so you probably cannot use it in a closed-source product because of the static linking limitation.
+This app note uses the Particle CAN library [can-mcp25x](https://github.com/particle-iot/can-mcp25x). The develop version of Tracker Edge firmware and version 9 and later will include this automatically, however you can manually include it in earlier versions if desired. 
+
+It is also possible to use [MCP_CAN_RK](https://github.com/rickkas7/MCP_CAN_RK) which is a fork of [MCP_CAN_lib](https://github.com/coryjfowler/MCP_CAN_lib) with some Particle-specific additions. The original version of this application note used that library, and migration instructions are included at the end of this app note.
 
 Since it's a pain to sit in your car with a laptop to experiment with this, there's a design for a simulator in the **Simulator** directory. 
 
@@ -61,12 +63,14 @@ Be sure to target 1.5.4-rc.1, or 3.0.0 or later, for your build. The 2.0.x LTS v
 
 ### Add the libraries
 
-From the command palette in Workbench, **Particle: Install Library** then enter **MCP_CAN_RK**. 
+The Tracker Edge develop branch and version 9 and later already has **can-mcp25x** included so you don't need to do anything else. If you are using version 8, you'll need to manually include it:
+
+From the command palette in Workbench, **Particle: Install Library** then enter **can-mcp25x**. 
 
 If you prefer to edit project.properties directly:
 
 ```
-dependencies.MCP_CAN_RK=1.5.1
+dependencies.can-mcp25x=1.0.0
 ```
 
 
@@ -138,7 +142,7 @@ int fastPublishPeriod = 0;
 int idleRPM = 1600;
 
 // Object for the CAN library. Note: The Tracker SoM has the CAN chip connected to SPI1 not SPI!
-MCP_CAN canInterface(CAN_CS, &SPI1);   
+MCP_CAN canInterface(CAN_CS, SPI1);   
 
 void locationGenerationCallback(JSONWriter &writer, LocationPoint &point, const void *context); // Forward declaration
 
@@ -183,7 +187,7 @@ void setup()
     // Most vehicles use 500 kbit/sec for OBD-II 
     // Make sure the last parameter is MCP_20MHZ; this is dependent on the crystal
     // connected to the CAN chip and it's 20 MHz on the Tracker SoM.
-    byte status = canInterface.begin(MCP_ANY, CAN_500KBPS, MCP_20MHZ);
+    byte status = canInterface.begin(MCP_SIDL, CAN_500KBPS, MCP_20MHZ);
     if(status == CAN_OK) {
         Log.info("CAN initialization succeeded");
     }
@@ -193,7 +197,7 @@ void setup()
 
     // Change to normal mode to allow messages to be transmitted. If you don't do this,
     // the CAN chip will be in loopback mode.
-    canInterface.setMode(MCP_NORMAL);   
+    canInterface.setMode(MODE_NORMAL);   
 
     // Connect to the cloud!
     Particle.connect();
@@ -210,7 +214,7 @@ void loop()
         unsigned char len = 0;
         unsigned char rxBuf[8];
 
-        canInterface.readMsgBuf(&rxId, &len, rxBuf);      // Read data: len = data length, buf = data byte(s)
+        canInterface.readMsgBufID(&rxId, &len, rxBuf);      // Read data: len = data length, buf = data byte(s)
         
         if ((rxId & 0x80000000) == 0x00000000) {
             // Standard frame 
@@ -331,9 +335,6 @@ void locationGenerationCallback(JSONWriter &writer, LocationPoint &point, const 
     nonIdleMin = 0;
     nonIdleMax = 0;
 }
-
-
-
 ```
 
 ## Digging In
@@ -411,7 +412,7 @@ Not only are they cloud configurable, but the last value is stored in the flash 
 
 ```cpp
 // Object for the CAN library. Note: The Tracker SoM has the CAN chip connected to SPI1 not SPI!
-MCP_CAN canInterface(CAN_CS, &SPI1);   
+MCP_CAN canInterface(CAN_CS, SPI1);   
 ```
 
 This is the library interface to the CAN controller chip. Of note:
@@ -484,7 +485,7 @@ This is the setup when using CAN. Make sure you set `CAN_PWR` and `CAN_STBY` to 
 // Most vehicles use 500 kbit/sec for OBD-II 
 // Make sure the last parameter is MCP_20MHZ; this is dependent on the crystal
 // connected to the CAN chip and it's 20 MHz on the Tracker SoM.
-byte status = canInterface.begin(MCP_ANY, CAN_500KBPS, MCP_20MHZ);
+byte status = canInterface.begin(MCP_SIDL, CAN_500KBPS, MCP_20MHZ);
 if(status == CAN_OK) {
     Log.info("CAN initialization succeeded");
 }
@@ -501,10 +502,10 @@ If you were making a real product, you might even make the CAN bus speed a cloud
 ```cpp
 // Change to normal mode to allow messages to be transmitted. If you don't do this,
 // the CAN chip will be in loopback mode.
-canInterface.setMode(MCP_NORMAL);   
+canInterface.setMode(MODE_NORMAL);   
 ```
 
-Make sure you always set the CAN mode to `MCP_NORMAL`!
+Make sure you always set the CAN mode to `MODE_NORMAL`!
 
 ```cpp
 // Must call this on every loop
@@ -521,7 +522,7 @@ if (!digitalRead(CAN_INT)) {
     unsigned char len = 0;
     unsigned char rxBuf[8];
 
-    canInterface.readMsgBuf(&rxId, &len, rxBuf);      // Read data: len = data length, buf = data byte(s)
+    canInterface.readMsgBufID(&rxId, &len, rxBuf);      // Read data: len = data length, buf = data byte(s)
     
     if ((rxId & 0x80000000) == 0x00000000) {
         // Standard frame 
@@ -547,7 +548,7 @@ When reading the `CAN_INT` GPIO and the signal is `LOW`, `digitalRead(CAN_INT)` 
 CAN data is never longer than 8 bytes to we can easily fit the data in a stack-based variable (`rxBuf`).
 
 ```cpp
-canInterface.readMsgBuf(&rxId, &len, rxBuf);      // Read data: len = data length, buf = data byte(s)
+canInterface.readMsgBufID(&rxId, &len, rxBuf);      // Read data: len = data length, buf = data byte(s)
 ```
 
 This does the actual read from the CAN bus queue.
@@ -712,5 +713,84 @@ And if you are monitoring the USB debug serial on the device, you should see som
 0000399003 [app] INFO: saving config engine: {"version":1,"hash":"22C59270DD3925B37E24D4657E24D465","engine":{"idle":1550,"fastpub":30000}}
 0000400296 [app] INFO: cloud received: {"cmd":"ack","req_id":3,"src_cmd":"loc","status":0}
 0000400672 [app] INFO: engineOff=0 engineIdle=0 engineNonIdle=0 engineMin=4987 engineMean=4989 engine<Max=4991
+```
+
+## Migrating from MCP_CAN_RK
+
+The original version of this library used [MCP_CAN_RK](https://github.com/rickkas7/MCP_CAN_RK) which is a fork of [MCP_CAN_lib](https://github.com/coryjfowler/MCP_CAN_lib) with some Particle-specific additions. If you used this library and want to migrate to the official can-mcp25x library you'll need to make a few minor source changes:
+
+#### MCP_CAN Constructor
+
+The MCP_CAN_RK library takes a pointer to the SPI interface. Change to a reference:
+
+Before:
+
+```cpp
+MCP_CAN canInterface(CAN_CS, &SPI1);   
+```
+
+After:
+
+```cpp
+MCP_CAN canInterface(CAN_CS, SPI1);   
+```
+
+#### mcp.begin constants like MCP_STD and MCP_ANY
+
+Before:
+
+```cpp
+byte status = canInterface.begin(MCP_STD, CAN_500KBPS, MCP_20MHZ);
+```
+
+After:
+
+```cpp
+byte status = canInterface.begin(MCP_SIDL, CAN_500KBPS, MCP_20MHZ);
+```
+
+| Before | After | Numeric | 
+| :--- | :--- | :--- | 
+| MCP_STDEXT | MCP_SIDH | 0 |
+| MCP_STD | MCP_SIDL | 1 |
+| MCP_EXT | MCP_EID8 | 2 |
+| MCP_ANY | MCP_EID0 | 3 |
+
+### setMode values
+
+Before:
+
+```cpp
+canInterface.setMode(MCP_NORMAL);   
+```
+
+After:
+
+```cpp
+canInterface.setMode(MODE_NORMAL);   
+```
+
+| Before | After | Numeric | 
+| :--- | :--- | :--- | 
+| MCP_NORMAL | MODE_NORMAL | 0x00 |
+| MCP_SLEEP | MODE_SLEEP | 0x20 |
+| MCP_LOOPBACK | MODE_LOOPBACK | 0x40 |
+| MCP_LISTENONLY | MODE_LISTENONLY | 0x60 |
+
+
+### readMsgBuf
+
+Calls to `readMsgBuf()` must be changed to `readMsgBufID()`.
+
+Before:
+
+```cpp
+canInterface.readMsgBuf(&rxId, &len, rxBuf)
+```
+
+After:
+
+```cpp
+canInterface.readMsgBufID(&rxId, &len, rxBuf)
 ```
 

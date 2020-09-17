@@ -79,7 +79,7 @@ int fastPublishPeriod = 0;
 int idleRPM = 1600;
 
 // Object for the CAN library. Note: The Tracker SoM has the CAN chip connected to SPI1 not SPI!
-MCP_CAN canInterface(CAN_CS, &SPI1);   
+MCP_CAN canInterface(CAN_CS, SPI1);   
 
 void locationGenerationCallback(JSONWriter &writer, LocationPoint &point, const void *context); // Forward declaration
 
@@ -124,7 +124,7 @@ void setup()
     // Most vehicles use 500 kbit/sec for OBD-II 
     // Make sure the last parameter is MCP_20MHZ; this is dependent on the crystal
     // connected to the CAN chip and it's 20 MHz on the Tracker SoM.
-    byte status = canInterface.begin(MCP_ANY, CAN_500KBPS, MCP_20MHZ);
+    byte status = canInterface.begin(MCP_SIDL, CAN_500KBPS, MCP_20MHZ);
     if(status == CAN_OK) {
         Log.info("CAN initialization succeeded");
     }
@@ -134,7 +134,7 @@ void setup()
 
     // Change to normal mode to allow messages to be transmitted. If you don't do this,
     // the CAN chip will be in loopback mode.
-    canInterface.setMode(MCP_NORMAL);   
+    canInterface.setMode(MODE_NORMAL);   
 
     // Connect to the cloud!
     Particle.connect();
@@ -151,7 +151,7 @@ void loop()
         unsigned char len = 0;
         unsigned char rxBuf[8];
 
-        canInterface.readMsgBuf(&rxId, &len, rxBuf);      // Read data: len = data length, buf = data byte(s)
+        canInterface.readMsgBufID(&rxId, &len, rxBuf);      // Read data: len = data length, buf = data byte(s)
         
         if ((rxId & 0x80000000) == 0x00000000) {
             // Standard frame 
