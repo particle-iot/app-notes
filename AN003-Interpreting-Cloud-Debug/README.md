@@ -137,9 +137,21 @@ Or something like this for LTE:
     78.176 AT read  +   13 "\r\n+CEREG: 2\r\n"
 ```
 
+#### SIM denied by network
+
+This is similar to the example above, but the CEREG response is 2,3.
+
+```
+    35.134 AT send      11 "AT+CEREG?\r\n"
+    35.142 AT read  +   15 "\r\n+CEREG: 2,3\r\n"
+    35.143 AT read OK    6 "\r\nOK\r\n"
+```
+
+The 2,3 response for CEREG (LTE) or CREG/CGREG (2G/3G) indicates that there was a tower, but it rejected the SIM.
+
 #### No compatible carrier for SIM
 
-The logs are very similar to the case where there is no signal, so it's best to do a carrier scan to see if any towers can be seen. You'll see a repeating sequence of CREG/CGREG or CEREG (for LTE) during modem registration:
+The logs are very similar to the case where there is no signal, so it's best to do a carrier scan to see if any towers can be seen. You'll see a repeating sequence of CREG/CGREG (2G/3G) or CEREG (LTE) during modem registration:
 
 ```
 [ Modem::register ] = = = = = = = = = = = = = =
