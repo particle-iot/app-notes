@@ -40,6 +40,36 @@ Note that CAN bus is differential and consists of two lines:
 
 As the signals are differential you don't need to connect GND for CAN bus.
 
+### Working with Device OS source
+
+In order to use the latest version of the Tracker Edge firmware, which is needed to use the built-in CAN library, you'll need to check out the latest source and build it locally. This is only necessary until Device OS 3.0.0-rc.1 is released in October 2020. Once 3.0.x is released, you can build against that using the normal methods in Workbench or CLI.
+
+- Get the latest Device OS source from GitHub. You'll need to have the command line version of git available in order to retrieve the submodules.
+
+```
+git clone git@github.com:particle-iot/device-os.git
+cd ./device-os
+git checkout release/v2.x
+git submodule update --init --recursive
+```
+
+- Launch Visual Studio Code.
+
+- Navigate to your Particle [settings](https://code.visualstudio.com/docs/getstarted/settings) and set the **Custom Device OS Location**.
+
+![Custom Device OS Location](images/settings-custom-deviceos-location.png)
+
+- Enter the absolute path to your Device OS source code and reload when prompted.
+- Open a Particle project and open a source file.
+- Click on the Device OS entry in the status bar to display a list of available toolchains.
+
+![Project Settings](images/statusbar-project-settings.png)
+
+- Select the **deviceOS@source** entry - it should be first in the list.
+- Wait for the toolchain to install and activate.
+
+Note: Even though official Device OS 2.x releases do not support the Tracker SoM, when you build from source can target the Tracker SoM.
+
 ### Getting the Tracker Edge Firmware
 
 The Tracker Edge firmware can be downloaded from Github:
@@ -56,23 +86,10 @@ git submodule update --init --recursive
 
 - Open Particle Workbench.
 - From the command palette, **Particle: Import Project**.
-- Run **Particle: Configure Workspace for Device**, select version 1.5.4-rc.1, or 3.0.0 or later, Tracker, and your device.
+- Run **Particle: Configure Workspace for Device**, select **deviceOS@source**, Tracker, and your device.
 - Run **Particle: Compile and Flash**.
 
-Be sure to target 1.5.4-rc.1, or 3.0.0 or later, for your build. The 2.0.x LTS versions of Device OS do not have Tracker support. There will be versions of 3.0.x released concurrently with 2.0.x releases. 
-
-### Add the libraries
-
-The Tracker Edge develop branch and version 9 and later already has **can-mcp25x** included so you don't need to do anything else. If you are using version 8, you'll need to manually include it:
-
-From the command palette in Workbench, **Particle: Install Library** then enter **can-mcp25x**. 
-
-If you prefer to edit project.properties directly:
-
-```
-dependencies.can-mcp25x=1.0.0
-```
-
+Be sure to target **deviceOS@source**, or 3.0.0 or later, for your build. The 2.0.x LTS release versions of Device OS do not have Tracker support. There will be versions of 3.0.x released concurrently with 2.0.x releases. The 1.5.4-rc.1 build does support the Tracker, but not the latest Tracker Edge firmware, and Tracker Edge 9 is needed for CAN support.
 
 ## Full Source
 
