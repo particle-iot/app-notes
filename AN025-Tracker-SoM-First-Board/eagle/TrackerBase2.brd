@@ -188,7 +188,7 @@
 <circle x="5.08" y="57.15" radius="0.254" width="0.1524" layer="22"/>
 <text x="28.575" y="111.125" size="1.778" layer="21">+</text>
 <text x="28.575" y="107.315" size="1.778" layer="21">-</text>
-<text x="18.415" y="104.775" size="1.27" layer="21">6-18 VDC</text>
+<text x="18.415" y="104.775" size="1.27" layer="21">3.9-17 VDC</text>
 <text x="55.88" y="85.09" size="1.27" layer="21">MODE</text>
 <text x="55.88" y="76.2" size="1.27" layer="21">RESET</text>
 <text x="55.88" y="67.31" size="1.27" layer="21">USER</text>

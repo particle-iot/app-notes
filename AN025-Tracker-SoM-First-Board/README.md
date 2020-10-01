@@ -50,7 +50,7 @@ Other features:
 |  8 | Charge LED, orange |
 |  9 | GNSS/RTC battery, CR1220 |
 | 10 | LiPo battery connector, JST-PH |
-| 11 | VIN Power Input, 6 - 18 VDC |
+| 11 | VIN Power Input, 3.9 - 17 VDC |
 | 12 | GNSS/RTC battery switch |
 | 13 | Trace jumpers for A0, A1, A2 |
 | 14 | CAN Termination jumper (0.1") |
