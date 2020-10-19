@@ -4,6 +4,8 @@ This application note contains a number of examples of application firmware for 
 
 The full code examples for this application note can be found in the [Github repository](https://github.com/particle-iot/app-notes/tree/master/AN009-Firmware-Examples) for this project.
 
+Author: Rick
+
 ## Publishing Examples, Sleeping Cellular Devices
 
 There are three examples of periodically publishing data from an E Series, Electron, Boron, or B Series SoM that mostly sleeps.

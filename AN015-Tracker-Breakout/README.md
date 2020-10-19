@@ -4,6 +4,8 @@ The full code examples for this application note can be found in the [Github rep
 
 ![Both Boards](images/both.jpg)
 
+Author: Rick
+
 ## Expanding the Tracker One
 
 ### Using the M8 connector

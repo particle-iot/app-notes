@@ -9,6 +9,7 @@ This guide mostly concentrates on cellular issues (Electron, E Series, and Boron
 
 The files for this application note can be found in the [Github repository](https://github.com/particle-iot/app-notes/tree/master/AN004-Interpreting-Cloud-Debug-2) for this project.
 
+Author: Rick
 
 ## Decoding u-blox AT Commands
 

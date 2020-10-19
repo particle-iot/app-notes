@@ -11,6 +11,8 @@ This application note demonstrates several ways you can expand the Tracker One u
 
 ![Main Image](images/top.jpg)
 
+Author: Rick
+
 ## Connecting
 
 The M8 (8mm) 8-pin connector on the Tracker One is standard, however it's not common. Some other connectors like M12 are more common, however, the 12mm connector would have required a taller enclosure to fit the larger connector. To simplify designs, Particle will provide a M8 female-to-wires cable, similar to this. This is for illustration only and the design may vary in the future.

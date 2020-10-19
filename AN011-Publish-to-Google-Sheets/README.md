@@ -21,6 +21,8 @@ Sections:
 - [Separate Spreadsheets by Device ID](https://github.com/particle-iot/app-notes/tree/master/AN011-Publish-to-Google-Sheets#separate-spreadsheets-by-device-id)
 - [Setting Columns by Key](https://github.com/particle-iot/app-notes/tree/master/AN011-Publish-to-Google-Sheets#setting-columns-by-key)
 
+Author: Rick
+
 ## Getting Started
 
 ### Create the script

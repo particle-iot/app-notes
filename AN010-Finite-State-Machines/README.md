@@ -17,6 +17,8 @@ While this example only has a single state machine, where they really shine is w
 
 The full code is available on Github; the sections below have the relevant excerpts.
 
+Author: Rick
+
 ## 01-Simple
 
 This is the simplest example of a state machine, which we'll walk through:

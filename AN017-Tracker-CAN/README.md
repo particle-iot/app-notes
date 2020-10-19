@@ -21,6 +21,8 @@ It is also possible to use [MCP_CAN_RK](https://github.com/rickkas7/MCP_CAN_RK) 
 
 Since it's a pain to sit in your car with a laptop to experiment with this, there's a design for a simulator in the **Simulator** directory. 
 
+Author: Rick
+
 ## Connecting
 
 - [Male J1962 cable](https://www.amazon.com/gp/product/B07F1887MB/ref=ppx_yo_dt_b_asin_title_o05_s00) ($14.99 for 2)

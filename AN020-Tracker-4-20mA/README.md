@@ -15,6 +15,7 @@ The single port design can be powered by the built-in LiPo battery or USB and us
 
 There is also an application note with support for [4 current loops](https://github.com/particle-iot/app-notes/tree/master/AN021-Tracker-4-20mA-Quad).
 
+Author: Rick
 
 ## Connecting
 

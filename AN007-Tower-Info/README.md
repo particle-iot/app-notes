@@ -8,6 +8,7 @@ It can also be used with a Boron LTE to find information about the LTE Cat M1 to
 
 The files for this application note can be found in the [Github repository](https://github.com/particle-iot/app-notes/tree/master/AN007-Tower-Info) for this project.
 
+Author: Rick
 
 ### The Tower Scanner
 

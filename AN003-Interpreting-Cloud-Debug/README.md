@@ -15,6 +15,7 @@ This application note is continued in [AN004 Interpreting Cloud Debug-2](https:/
 
 The files for this application note can be found in the [Github repository](https://github.com/particle-iot/app-notes/tree/master/AN003-Interpreting-Cloud-Debug) for this project.
 
+Author: Rick
 
 ## Troubleshooting
 

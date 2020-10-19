@@ -2,6 +2,8 @@
 
 The full code examples for this application note can be found in the [Github repository](https://github.com/particle-iot/app-notes/tree/master/AN022-Tracker-SHT3x-Temperature-Humidity) for this project.
 
+Author: Rick
+
 ## Introduction
 
 This application note illustrates several hardware and software techniques:

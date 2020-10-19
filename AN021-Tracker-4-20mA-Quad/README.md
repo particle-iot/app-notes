@@ -16,6 +16,8 @@ There is also a simple [single current loop design](https://github.com/particle-
 - I2C Quad ADC (ADS1015)
 - 3.3V power supply for the ADC (from CAN_5V)
 
+Author: Rick
+
 ## Connecting
 
 The M8 (8mm) 8-pin connector on the Tracker One is standard, however it's not common. Some other connectors like M12 are more common, however, the 12mm connector would have required a taller enclosure to fit the larger connector. To simplify designs, Particle will provide a M8 female-to-wires cable, similar to this. This is for illustration only and the design may vary in the future.
