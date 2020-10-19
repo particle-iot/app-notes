@@ -2,6 +2,7 @@
 
 The full code examples for this application note can be found in the [Github repository](https://github.com/particle-iot/app-notes/tree/master/AN012-Tracker-1Wire) for this project.
 
+Author: Rick
 
 ## Introduction
 

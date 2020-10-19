@@ -21,6 +21,8 @@ There is another design in the [SoM first board tutorial](https://docs.particle.
 
 The files for this application note can be found in the [Github repository](https://github.com/particle-iot/app-notes/tree/master/AN001-Basic-SoM-Design) for this project.
 
+Author: Rick
+
 ## Board
 
 ![Board Features](images/features.png)

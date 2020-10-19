@@ -2,6 +2,8 @@
 
 The full code examples for this application note can be found in the [Github repository](https://github.com/particle-iot/app-notes/tree/master/AN013-Tracker-GPIO) for this project.
 
+Author: Rick
+
 ## Introduction
 
 This application note illustrates several hardware and software techniques:

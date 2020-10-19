@@ -4,6 +4,8 @@ The full code examples for this application note can be found in the [Github rep
 
 This application note demonstrates how start prototyping with off-the-shelf I2C sensors and the Tracker SoM Evaluation Board and migrate to using a custom board for the Tracker One M8 Connector. While this specific example is for a thermocouple sensor, the techniques can be used with any sensor.
 
+Author: Rick
+
 ## Prototype Version
 
 One of the best ways to expand the Tracker One is using I2C, since that interface makes it possible to add multiple external peripherals off the single M8 connector. You can use the same techniques on the Tracker SoM Evaluation Board and Tracker SoM.

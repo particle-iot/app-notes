@@ -22,6 +22,10 @@ USB Connector, LiPo Connector (JST-PH), and M.2 SoM Connector.
 - [AN024 Tracker Relay](https://github.com/particle-iot/app-notes/tree/master/AN024-Tracker-Relay) shows how to connect two different types of relays to the Tracker One using the M8 connector.
 - [AN025 Tracker SoM First Board](https://github.com/particle-iot/app-notes/tree/master/AN025-Tracker-SoM-First-Board) contains the Eagle CAD files for creating your first Tracker SoM base board design.
 
+### Solutions Accelerator Projects
+
+- [AN026 Tracker Current Solutions Accelerator](https://github.com/particle-iot/app-notes/tree/master/AN026-Tracker-Current-Solutions-Accelerator) shows how to measure AC current using the Tracker One via the M8 connector.
+
 ### Programming techniques
 
 - [AN002-Device-Powerdown](https://github.com/particle-iot/app-notes/tree/master/AN002-Device-Powerdown) shows how to 
@@ -57,7 +61,7 @@ interpret cloud debugging logs to troubleshoot various common issues.
 - [AN022 Tracker SHT3x Temperature/Humidity](https://github.com/particle-iot/app-notes/tree/master/AN022-Tracker-SHT3x-Temperature-Humidity) shows how to connect 5V I2C devices including the SHT30 and SHT31 temperature and humidity sensors to the Tracker One M8 connector and add data to location publishes.
 - [AN024 Tracker Relay](https://github.com/particle-iot/app-notes/tree/master/AN024-Tracker-Relay) shows how to connect two different types of relays to the Tracker One using the M8 connector.
 - [AN025 Tracker SoM First Board](https://github.com/particle-iot/app-notes/tree/master/AN025-Tracker-SoM-First-Board) contains the Eagle CAD files for creating your first Tracker SoM base board design.
-
+- [AN026 Tracker Current Solutions Accelerator](https://github.com/particle-iot/app-notes/tree/master/AN026-Tracker-Current-Solutions-Accelerator) shows how to measure AC current using the Tracker One via the M8 connector.
 
 ## Numerical List
 
@@ -85,3 +89,4 @@ interpret cloud debugging logs to troubleshoot various common issues.
 - [AN022 Tracker SHT3x Temperature/Humidity](https://github.com/particle-iot/app-notes/tree/master/AN022-Tracker-SHT3x-Temperature-Humidity) shows how to connect 5V I2C devices including the SHT30 and SHT31 temperature and humidity sensors to the Tracker One M8 connector and add data to location publishes.
 - [AN024 Tracker Relay](https://github.com/particle-iot/app-notes/tree/master/AN024-Tracker-Relay) shows how to connect two different types of relays to the Tracker One using the M8 connector.
 - [AN025 Tracker SoM First Board](https://github.com/particle-iot/app-notes/tree/master/AN025-Tracker-SoM-First-Board) contains the Eagle CAD files for creating your first Tracker SoM base board design.
+- [AN026 Tracker Current Solutions Accelerator](https://github.com/particle-iot/app-notes/tree/master/AN026-Tracker-Current-Solutions-Accelerator) shows how to measure AC current using the Tracker One via the M8 connector.

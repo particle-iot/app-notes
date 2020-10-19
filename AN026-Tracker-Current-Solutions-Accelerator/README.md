@@ -2,6 +2,10 @@
 
 This tutorial shows how to measure AC current using the Tracker One and a few external components. 
 
+The full code examples for this application note can be found in the [Github repository](https://github.com/particle-iot/app-notes/tree/master/AN026-Tracker-Current-Solutions-Accelerator) for this project.
+
+Author: Mariano
+
 ## Hardware
 
 This Solutions Accelerator uses:

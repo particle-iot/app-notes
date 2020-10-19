@@ -93,3 +93,5 @@ void loop() {
 ```
 
 The files for this application note can be found in the [Github repository](https://github.com/particle-iot/app-notes/tree/master/AN002-Device-Powerdown) for this project.
+
+Author: Rick
