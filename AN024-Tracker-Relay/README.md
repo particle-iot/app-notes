@@ -116,7 +116,7 @@ The Tracker Edge firmware can be downloaded from Github:
 You will probably want to use the command line as there are additional commands you need to run after cloning the source:
 
 ```bash
-git clone git@github.com:particle-iot/tracker-edge.git 
+git clone https://github.com/particle-iot/tracker-edge 
 cd tracker-edge
 git checkout origin/release/v8
 git submodule update --init --recursive
@@ -125,7 +125,7 @@ git submodule update --init --recursive
 - Open Particle Workbench.
 - From the command palette, **Particle: Import Project**.
 - Run **Particle: Configure Workspace for Device**, select version 1.5.4-rc.1, 2.0.0-rc.3, or later, Tracker, and your device.
-- Run **Particle: Compile and Flash**.
+- Run **Particle: Flash application (local)**.
 
 #### Add the libraries - Quad Relay
 
@@ -284,7 +284,7 @@ The Tracker Edge firmware can be downloaded from Github:
 You will probably want to use the command line as there are additional commands you need to run after cloning the source:
 
 ```bash
-git clone git@github.com:particle-iot/tracker-edge.git 
+git clone https://github.com/particle-iot/tracker-edge 
 cd tracker-edge
 git checkout origin/release/v8
 git submodule update --init --recursive
@@ -293,7 +293,7 @@ git submodule update --init --recursive
 - Open Particle Workbench.
 - From the command palette, **Particle: Import Project**.
 - Run **Particle: Configure Workspace for Device**, select version 1.5.4-rc.1, 2.0.0-rc.3, or later, Tracker, and your device.
-- Run **Particle: Compile and Flash**.
+- Run **Particle: Flash application (local)**.
 
 #### Add the libraries - Dual Latching Relay
 
