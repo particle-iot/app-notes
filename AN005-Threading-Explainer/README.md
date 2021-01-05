@@ -1011,21 +1011,25 @@ One handy trick is to use a mutex to block your thread until something happens e
 
 SYSTEM_THREAD(ENABLED);
 
-void startupFunction();
 void threadFunction(void *param);
 
-// The mutex is initialized in startupFunction()
-STARTUP(startupFunction());
-
-Thread thread("testThread", threadFunction);
 
 os_mutex_t mutex;
-
 
 void buttonHandler();
 
 void setup() {
 	Serial.begin(9600);
+
+	// Create the mutex
+	os_mutex_create(&mutex);
+
+	// Initially lock it, so when the thread tries to lock it, it will block.
+	// It's unlocked in buttonHandler()
+	os_mutex_lock(mutex);
+
+	// Create the thread
+	new Thread("testThread", threadFunction);
 
 	System.on(button_click, buttonHandler);
 }
@@ -1036,17 +1040,6 @@ void loop() {
 void buttonHandler() {
 	// Release the thread mutex
 	os_mutex_unlock(mutex);
-}
-
-// Note: threadFunction will be called before setup(), so you can't initialize the mutex there!
-// STARTUP() is a good place to do it
-void startupFunction() {
-	// Create the mutex
-	os_mutex_create(&mutex);
-
-	// Initially lock it, so when the thread tries to lock it, it will block.
-	// It's unlocked in buttonHandler()
-	os_mutex_lock(mutex);
 }
 
 void threadFunction(void *param) {
@@ -1060,10 +1053,11 @@ void threadFunction(void *param) {
 	}
 	// You must not return from the thread function
 }
-
 ```
 
 You should use a mutex instead a busy wait (testing for a condition in a while loop) whenever possible as mutexes are a fundamental and very efficient part of FreeRTOS. A thread blocked on a mutex doesn't use any CPU.
+
+Note that an earlier version of this application note used `STARTUP()` to create the mutex. This is no longer recommended. Instead of creating mutex and thread objects using STARTUP, global object constructors, or global lambda functions, it's much better to defer everything to `setup()`. The reason is that the order of global object constructions is indeterminate and may fail to initialize properly.
 
 ### Using a queue
 
@@ -1147,6 +1141,7 @@ In the [asynctcpclient](https://github.com/rickkas7/asynctcpclient) project, thr
 
 There are two APIs available for threads: The C++ `Thread` class and the underlying API. Both can be used. They are currently wrappers around [FreeRTOS task functions](https://www.freertos.org/a00019.html).
 
+Note: You should avoid creating a `Thread` object as a global object, a member variable of a global object, or a superclass of a global object unless allocated using `new` during `setup()` or later. The reason is that globally constructed objects are not instantiated in a determinate order, and the thread may fail to initialize properly. It's also impossible to guarantee the correct ordering of initialization of globally allocated mutex and thread objects.
 
 #### Thread::Thread() (constructor os_thread_fn_t)
 
