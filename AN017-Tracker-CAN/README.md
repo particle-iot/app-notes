@@ -408,7 +408,7 @@ int fastPublishPeriod = 0;
 int idleRPM = 1600;
 ```
 
-These two parameters are cloud configuration parameters. You can't currently set them directly from the console, but you can set them using the cloud API or using curl. They can be set product-wide or per-device if the device is marked as a development device.
+These two parameters are cloud configuration parameters. They can be set product-wide or per-device if the device is marked as a development device, as described below.
 
 Not only are they cloud configurable, but the last value is stored in the flash file system, so the last known value can be retrieved before cloud connecting. If the configured value changed while offline, it will be updated automatically after cloud connecting. If the value is changed while online, it's updated immediately, no need to wait to reconnect.
 
@@ -667,17 +667,11 @@ If the `fastPublishPeriod` is non-zero and that time period has expired, do a ma
 
 ## Setting Cloud Configuration
 
-The cloud configuration cannot be set from the console, but you can set it from the CLI using curl. 
+This section uses the extensible cloud configuration schema, which is still in beta testing. You can skip this section and the software will work fine without using this feature, which is not yet documented and may still have bugs.
 
-```
-curl -X PUT https://api.particle.io/v1/products/:productId/config/:deviceId?access_token=:accessToken -H "Content-Type: application/json" -d "{\"engine\":{\"idle\":1550,\"fastpub\":30000}}"
-```
+The configuration data that is sent between the device and cloud is described by a **schema**. Not only does this define valid values for the fields, but it also describes the presentation of the data in the console user interface. You can add new elements to the schema and you can edit the values of your custom fields directly from the console!
 
-Be sure to update:
-
-`:productId` with your product ID
-`:deviceId` with your Device ID that is set as a development device. If you want to change the contrast across your whole product leave off the slash and device ID.
-`:accessToken` with a product access token. An easy way to get a temporary 
+### Getting an access token
 
 One easy way to get a temporary access token is to:
 
@@ -688,6 +682,97 @@ One easy way to get a temporary access token is to:
 - In the **Events** tab, click on **View events from a terminal** (it's a button).
 - Copy and paste the access token from the end of the command that is displayed.
 - This token is invalidated when your close the console.
+
+You can also generate a token using oAuth client credentials. You can adjust the expiration time using this method, including making it non-expiring.
+
+### Backing up the schema
+
+It's a good idea to make a backup copy of the schema before you modify it. The feature to delete the custom schema and revert to the factory default is planned but not currently implemented. 
+
+```
+curl -X GET 'https://api.particle.io/v1/products/:productId/config/:deviceId?access_token=:accessToken' -H 'Accept: application/schema+json'
+```
+
+- `:productId` with your product ID
+- `:deviceId` with your Device ID that is set as a development device. If you want to change the contrast across your whole product leave off the slash and device ID.
+- `:accessToken` with a product access token, described above.
+
+This will return a big block of JSON data. Copy and paste this into a file for future use, if necessary.
+
+### Setting a custom schema
+
+Once you have backed up your schema, you can add in the custom settings. There is an example of where it gets inserted in the testengine.json file in the repository for this app note.
+
+These are the fields that will be added. This not only describe the data, but match the configuration data in the user firmware, and are also used to describe the console user interface.
+
+```json
+        "engine": {
+            "$id": "#/properties/engine",
+            "type": "object",
+            "title": "Engine",
+            "description": "CAN demo engine settings",
+            "default": {},
+            "properties": {
+                "idle": {
+                    "$id": "#/properties/engine/properties/idle",
+                    "type": "integer",
+                    "title": "Idle RPM speed",
+                    "description": "If engine RPM is less than this value, the engine will be considered to be idling",
+                    "default": 1600,
+                    "examples": [
+                    ],
+                    "minimum":0,
+                    "maximum":10000
+                },
+                "fastpub": {
+                    "$id": "#/properties/engine/properties/fastpub",
+                    "type": "integer",
+                    "title": "Publish period when running (milliseconds)",
+                    "description": "Publish period when engine is not off or idling in milliseconds (0 = use default)",
+                    "default": 0,
+                    "examples": [
+                    ],
+                    "minimum":0,
+                    "maximum":3600000
+                }
+            }
+        }
+```
+
+There is no UI for setting the configuration schema, you will need to set it using curl:
+
+```
+curl -X PUT 'https://api.particle.io/v1/products/:productId/config/:deviceId?access_token=:accessToken' -H  'Content-Type: application/schema+json' -d @testengine.json
+```
+
+- `:productId` with your product ID
+- `:deviceId` with your Device ID that is set as a development device. If you want to change the contrast across your whole product leave off the slash and device ID.
+- `:accessToken` with a product access token, described above.
+
+To restore the normal behavior, instead of using @testengine.json, use the backup schema you saved in the previous step.
+
+
+### Using the console
+
+![Console](images/console1.png)
+
+With the schema set, you can now go into configuration (either device or product-wide, depending on what you set), and there will be a new tab, **ENGINE**!
+
+There is a pretty obvious mapping from the JSON above to the fields in the console. And you can now manipulate the engine settings from the console.
+
+### Setting values using the API
+
+You can also set the values using the API directly, such as by using curl:
+
+```
+curl -X PUT 'https://api.particle.io/v1/products/:productId/config/:deviceId?access_token=:accessToken' -H "Content-Type: application/json" -d "{\"engine\":{\"idle\":1550,\"fastpub\":30000}}"
+```
+
+Be sure to update:
+
+- `:productId` with your product ID
+- `:deviceId` with your Device ID that is set as a development device. If you want to change the contrast across your whole product leave off the slash and device ID.
+- `:accessToken` with a product access token, described above.
 
 This sets this configuration object:
 
