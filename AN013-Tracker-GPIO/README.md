@@ -22,6 +22,8 @@ If you need even more GPIO you can add an MCP23017 (16 GPIO), and even add more 
 
 ![Board Image](images/5v.jpg)
 
+[AN027 Tracker Button and LEDs](https://github.com/particle-iot/app-notes/tree/master/AN027-Tracker-Buttons-LEDs) shows how to connect add a push button, two LEDs, a buzzer, and a 5V I2C port for the SHT30 temperature and humidity sensor to the Tracker One using the M8 connector. It also uses the MCP23008 GPIO expander.
+
 ## Connecting
 
 The M8 (8mm) 8-pin connector on the Tracker One is standard, however it's not common. Some other connectors like M12 are more common, however, the 12mm connector would have required a taller enclosure to fit the larger connector. To simplify designs, Particle will provide a M8 female-to-wires cable, similar to this. This is for illustration only and the design may vary in the future.
