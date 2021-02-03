@@ -51,7 +51,7 @@ This example can be used three different ways:
 
 ![M8 and Power](images/power.png)
 
-This board is intended to be powered by the M8 connector, which includes the 5V CAN_PWR. This is a controllable boost power supply that supplies 5V at 400 mA even off battery.
+This board is intended to be powered by the M8 connector, which includes the 5V CAN_PWR. This is a controllable boost power supply that supplies 5V at 370 mA even off battery.
 
 Since much of the logic including the nRF52840 GPIO and I2C run only at 3.3V, a 3.3V regulator (XCL224) is included in this design. This regulator is a tiny switching regulator and is nice because it does not require an external inductor, saving space and cost.
 

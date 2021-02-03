@@ -50,7 +50,7 @@ This example can be used three different ways:
 
 ![M8 and Power](images/power.png)
 
-This board is intended to be powered by the M8 connector, which includes the 5V CAN_PWR. This is a controllable boost power supply that supplies 5V at 400 mA even off battery.
+This board is intended to be powered by the M8 connector, which includes the 5V CAN_PWR. This is a controllable boost power supply that supplies 5V at 370 mA even off battery.
 
 Since much of the logic including the nRF52840 GPIO and I2C run only at 3.3V, a 3.3V regulator (XCL224) is included in this design. This regulator is a tiny switching regulator and is nice because it does not require an external inductor, saving space and cost.
 
@@ -88,7 +88,7 @@ One caveat: The ADS1015 does not measure edge-to-edge at 12-bit. You can adjust 
 
 ![Boost Converter](images/boost.png)
 
-This shows how you can power low-current 12V sensors, like the tank level sensor. Keep in mind that there's a small LiPo battery in the Tracker One, and a 400 mA 3.6 to 5V boost converter for CAN_5V inside the Tracker One. Boosting it again to 12V is not particularly efficient, but works fine for this sensor. The boost converter is controlled by a MCP23008 GPIO. It's normally powered down but you can turn it on right before you capture a sample and turn it off again to conserve power.
+This shows how you can power low-current 12V sensors, like the tank level sensor. Keep in mind that there's a small LiPo battery in the Tracker One, and a 370 mA 3.6 to 5V boost converter for CAN_5V inside the Tracker One. Boosting it again to 12V is not particularly efficient, but works fine for this sensor. The boost converter is controlled by a MCP23008 GPIO. It's normally powered down but you can turn it on right before you capture a sample and turn it off again to conserve power.
 
 Q1 is a P-channel MOSFET high-side switch that can supplies the power to the boost converter. Since the gate requires a pull-up to 5V (so it will default to off) it can't be directly connected to the 3.3V GPIO on the MCP23008 GPIO expander. Pulling the gate low turns on the MOSFET and the boost converter.
 

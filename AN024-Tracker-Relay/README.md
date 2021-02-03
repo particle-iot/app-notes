@@ -38,7 +38,7 @@ This example can be used three different ways:
 
 ![Regulator](images/regulator.png)
 
-This board is intended to be powered by the M8 connector, which includes the 5V CAN_PWR. This is a controllable boost power supply that supplies 5V at 400 mA even off battery.
+This board is intended to be powered by the M8 connector, which includes the 5V CAN_PWR. This is a controllable boost power supply that supplies 5V at 370 mA even off battery.
 
 Since much of the logic including the nRF52840 GPIO and I2C run only at 3.3V, a 3.3V regulator (XCL224) is included in this design. This regulator is a tiny switching regulator and is nice because it does not require an external inductor, saving space and cost.
 
@@ -97,7 +97,7 @@ Each of the four relays has the same design. Some information on the relays:
 - 250VAC, 125VDC 10A - Max
 - 79.4 mA coil current, non-latching
 - Operate: 10 ms, Release: 5 ms
-- 4 of these is 320 mA with all energized, the maximum reasonable on the 400 mA boost.
+- 4 of these is 320 mA with all energized, the maximum reasonable on the 370 mA boost.
 
 The 5V coil was selected because 3.3V relays are not generally available for relays larger than signal relays, and tend to be expensive. Since 5V is available from CAN_5V it's an obvious choice. (12V is a better choice if you happen to have 12V available.)
 

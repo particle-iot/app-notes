@@ -116,7 +116,7 @@ More information on using the SHT30 temperature and humidity sensor can be found
 
 ![Regulator](images/sch4.png)
 
-The M8 connector supplies 5V at 400 mA, and can be turned on and off using the `CAN_PWR` GPIO. There is a boost converter on the Tracker SoM and 5V is available off battery as well as USB and external VIN power.
+The M8 connector supplies 5V at 370 mA, and can be turned on and off using the `CAN_PWR` GPIO. There is a boost converter on the Tracker SoM and 5V is available off battery as well as USB and external VIN power.
 
 Since the nRF52840 MCU only supports 3.3V logic levels on I2C, Serial, and GPIO, a 3.3V regulator is often required. This design uses a Torex XC6215. It's tiny, inexpensive ($0.71), and does not require an external inductor, which saves space and BoM costs. It's a 200 mA linear regulator, but the voltage from from CAN_5V to 3.3V is small enough and the load low enough that this is a reasonable choice.
 
