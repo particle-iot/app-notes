@@ -746,7 +746,7 @@ curl -X PUT 'https://api.particle.io/v1/products/:productId/config/:deviceId?acc
 ```
 
 - `:productId` with your product ID
-- `:deviceId` with your Device ID that is set as a development device. If you want to change the contrast across your whole product leave off the slash and device ID.
+- `:deviceId` with your Device ID that is set as a development device. If you want to change the setting across your whole product leave off the slash and device ID.
 - `:accessToken` with a product access token, described above.
 
 To restore the normal behavior, instead of using @testengine.json, use the backup schema you saved in the previous step.
@@ -771,7 +771,7 @@ curl -X PUT 'https://api.particle.io/v1/products/:productId/config/:deviceId?acc
 Be sure to update:
 
 - `:productId` with your product ID
-- `:deviceId` with your Device ID that is set as a development device. If you want to change the contrast across your whole product leave off the slash and device ID.
+- `:deviceId` with your Device ID that is set as a development device. If you want to change the setting across your whole product leave off the slash and device ID.
 - `:accessToken` with a product access token, described above.
 
 This sets this configuration object:

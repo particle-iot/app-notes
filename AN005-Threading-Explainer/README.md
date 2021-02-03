@@ -14,7 +14,6 @@ While this is a threads explainer, in most cases you can get by without threads,
 
 - Most APIs are not thread safe
 - Limited memory and no virtual memory makes using large numbers of threads impractical
-- There is no way to stop a thread once started
 
 If you look through the Windows or Java APIs, it's abundantly clear which API calls are thread-safe, because they are listed as MT-safe or not. The Particle APIs are generally not safe, but there's no single reference as to what is safe. 
 
