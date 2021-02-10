@@ -12,6 +12,7 @@ The reason for Gen 2 is that most CAN interface breakouts are 5V. Gen 3 devices 
 
 - Solderless breadboard
 - Potentiometer (at least 50K)
+- 120 ohm resistor
 
 Connect the outer pins to 3V3 and GND. Connect the inner (wiper) to A0, the orange wire in the picture above.
 
@@ -49,6 +50,8 @@ Note that CAN bus is differential and consists of two lines:
 - CANL (low), CAN_N (negative), or CAN-
 
 As the signals are differential you don't need to connect GND for CAN bus.
+
+When using the simulator you will probably need to add a 120 ohm termination resistor on the Tracker end as well as enabling it on the breakout module.
 
 As the wires on the J1962 cable are a small wire gauge, I soldered some Dupont wires on the ends to make they fit in the screw terminals more securely, but this is optional. Some extra solder on the ends of the wires would probably do the trick as well.
 

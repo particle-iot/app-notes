@@ -42,6 +42,16 @@ Note that CAN bus is differential and consists of two lines:
 
 As the signals are differential you don't need to connect GND for CAN bus.
 
+## Termination Resistors
+
+The CAN bus requires termination resistors, typically 120 ohms on each end of the CAN bus to prevent reflection of the signal. 
+
+In some cases, you will attach the Tracker One or Tracker SoM in the middle of the CAN bus, so no additional termination will be necessary. 
+
+If you are attaching the Tracker to a vehicle OBD-II port, you may not need to add termination as the diagnostic connector may already include termination and be sufficient.
+
+If you are directly connecting another CAN module to the Tracker you will have to add termination resistors on both ends. The Tracker SoM and Tracker One do not contain 120 ohm termination resistors.
+
 ### Getting the Tracker Edge Firmware
 
 The Tracker Edge firmware can be downloaded from Github:
